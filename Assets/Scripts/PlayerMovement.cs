@@ -117,6 +117,13 @@ public class PlayerMovement : MonoBehaviour
         isInGround = true;
             
         if(rigidBody.velocity.y < 0) {
+            if(isCollidingRight){
+                RotatePlayerModel(new Vector2(-1,0));
+                
+            } else if(isCollidingLeft){
+                RotatePlayerModel(new Vector2(1,0));
+            }   
+
             isSliding = true;
             rigidBody.velocity = new Vector3(0, -walking.slideDownSpeed, 0);
 
@@ -160,18 +167,18 @@ public class PlayerMovement : MonoBehaviour
         ){
             if(isSliding) rigidBody.velocity = Vector3.zero;
 
-            if(isSliding && isCollidingRight){
+            /*if(isSliding && isCollidingRight){
                 //transform.Translate(0, 0, 0);
 
-                //rigidBody.AddForce(-walking.horizontalJumpForce, walking.jumpForce, 0/*, ForceMode.Acceleration*/);
+                //rigidBody.AddForce(-walking.horizontalJumpForce, walking.jumpForce, 0);
                 RotatePlayerModel(new Vector2(-1,0));
                 
             } else if(isSliding && isCollidingLeft){
                 //transform.Translate(0, 0, 0);
 
-                //rigidBody.AddForce(walking.horizontalJumpForce, walking.jumpForce, 0/*, ForceMode.Acceleration*/);
+                //rigidBody.AddForce(walking.horizontalJumpForce, walking.jumpForce, 0);
                 RotatePlayerModel(new Vector2(1,0));
-            } 
+            } */
                 
             JumpUp(walking.jumpForce);
 

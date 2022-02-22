@@ -446,7 +446,7 @@ MonoBehaviour:
     right: 0.45
     left: 0.45
   walking:
-    moveForce: 100
+    moveForce: 150
     maxSpeed: 10
     jumpForce: 10000
     horizontalJumpForce: 30000

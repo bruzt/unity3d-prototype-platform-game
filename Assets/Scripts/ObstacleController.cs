@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class ObstacleController : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -21,7 +21,8 @@ public class Coin : MonoBehaviour
         playerInteraction = collider.gameObject.GetComponentInParent<PlayerInteraction>();
 
         if(playerInteraction != null){
-            if(collider.name == "Body") playerInteraction.CoinCollision(this.gameObject);
+            if(collider.name == "RightCollider") playerInteraction.SetCollidingRight(this.gameObject);
+            else if(collider.name == "LeftCollider") playerInteraction.SetCollidingLeft(this.gameObject);
         }
     }
 

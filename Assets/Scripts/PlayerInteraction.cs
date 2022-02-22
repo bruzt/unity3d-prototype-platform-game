@@ -46,7 +46,7 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     void OnTriggerEnterTrampoline(Collider collider){
-        Trampoline trampoline = collider.GetComponent<Trampoline>();
+        TrampolineController trampoline = collider.GetComponent<TrampolineController>();
 
         if(
             trampoline != null && 

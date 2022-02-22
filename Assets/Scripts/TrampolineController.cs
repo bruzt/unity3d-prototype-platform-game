@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Trampoline : MonoBehaviour
+public class TrampolineController : MonoBehaviour
 {
     public float jumpForce = 1;
 

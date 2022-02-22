@@ -37,15 +37,15 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets/Scripts/PlayerInteraction.cs" />
-     <Compile Include="Assets/Scripts/Obstacle.cs" />
+     <Compile Include="Assets/Scripts/ObstacleController.cs" />
      <Compile Include="Assets/Scripts/PlayerMovement.cs" />
-     <Compile Include="Assets/Scripts/Trampoline.cs" />
+     <Compile Include="Assets/Scripts/TrampolineController.cs" />
      <Compile Include="Assets/Scripts/UIController.cs" />
      <Compile Include="Assets/Scripts/CameraFallow.cs" />
-     <Compile Include="Assets/Scripts/GameController.cs" />
-     <Compile Include="Assets/Scripts/PlayerController.cs" />
      <Compile Include="Assets/Scripts/PropSpawner.cs" />
-     <Compile Include="Assets/Scripts/Coin.cs" />
+     <Compile Include="Assets/Scripts/GameController.cs" />
+     <Compile Include="Assets/Scripts/CoinController.cs" />
+     <Compile Include="Assets/Scripts/PlayerController.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/home/bruno/Unity/Hub/Editor/2020.3.29f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
