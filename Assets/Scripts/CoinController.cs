@@ -21,7 +21,7 @@ public class CoinController : MonoBehaviour
         playerInteraction = collider.gameObject.GetComponentInParent<PlayerInteraction>();
 
         if(playerInteraction != null){
-            if(collider.name == "Body") playerInteraction.CoinCollision(this.gameObject);
+            if(collider.name.Contains("Body")) playerInteraction.CoinCollision(this.gameObject);
         }
     }
 

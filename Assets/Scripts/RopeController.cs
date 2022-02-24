@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class RopeController : MonoBehaviour
 {
-    private Transform node;
-
     public int size = 1;
     public float offsetNode = 0.1f;
 
     // Start is called before the first frame update
     void Start()
     {
-        node = transform.GetChild(0);
+        Transform node = transform.GetChild(0);
 
         for(int i=1; i < size; i++){
             Vector3 position = node.transform.position;

@@ -25,9 +25,17 @@ public class RopeSegmentController : MonoBehaviour
 
     void FixedUpdate()
     {
-        LimitXMaxVelocity();
-        LimitZRotationDegree();
-        LimitXPosition();
+        //LimitXMaxVelocity();
+        //LimitZRotationDegree();
+        //LimitXPosition();
+    }
+
+    void OnCollisionStay(Collision collision){
+        if(collision.gameObject.name.Contains("Player")) OnCollisionStayPlayer(collision);
+    }
+
+    void OnCollisionExit(Collision collision){
+        if(collision.gameObject.name.Contains("Player")) OnCollisionExitPlayer(collision);
     }
 
     void LimitXMaxVelocity(){
@@ -65,5 +73,13 @@ public class RopeSegmentController : MonoBehaviour
         float degree = finalMaxZRotationDegree*percent;
 
         maxZRotationDegree = degree;
+    }
+
+    private void OnCollisionStayPlayer(Collision collision){
+        collision.gameObject.GetComponentInParent<PlayerController>().SetIsRopeSwinging(true);
+    }
+
+    private void OnCollisionExitPlayer(Collision collision){
+        collision.gameObject.GetComponentInParent<PlayerController>().SetIsRopeSwinging(false);
     }
 }

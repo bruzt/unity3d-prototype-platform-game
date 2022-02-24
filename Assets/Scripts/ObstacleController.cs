@@ -21,8 +21,8 @@ public class ObstacleController : MonoBehaviour
         playerInteraction = collider.gameObject.GetComponentInParent<PlayerInteraction>();
 
         if(playerInteraction != null){
-            if(collider.name == "RightCollider") playerInteraction.SetCollidingRight(this.gameObject);
-            else if(collider.name == "LeftCollider") playerInteraction.SetCollidingLeft(this.gameObject);
+            if(collider.name.Contains("PlayerRight")) playerInteraction.SetCollidingRight(this.gameObject);
+            else if(collider.name.Contains("PlayerLeft")) playerInteraction.SetCollidingLeft(this.gameObject);
         }
     }
 
