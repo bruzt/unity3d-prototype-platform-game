@@ -20,9 +20,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        inputDirection.y = Input.GetAxis("Vertical");
+        inputDirection.x = Input.GetAxis("Horizontal");
+
         if(isMoving){
-            inputDirection.y = Input.GetAxis("Vertical");
-            inputDirection.x = Input.GetAxis("Horizontal");
 
             if(Input.GetButtonDown("Jump")) movement.Jump();
         
@@ -30,6 +31,9 @@ public class PlayerController : MonoBehaviour
 
         } else if(isRopeSwinging){
 
+            if(Input.GetButtonDown("Jump")) StartCoroutine(movement.JumpInRope());
+
+            movement.MoveInRope(inputDirection);
         }
     }
 

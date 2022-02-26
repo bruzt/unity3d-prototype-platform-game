@@ -63,4 +63,8 @@ public class PlayerInteraction : MonoBehaviour
         
         GameObject.Destroy(coin);
     }
+
+    public void SetRigibdodyVelocity(Vector3 velocity){
+        rigidBody.velocity = velocity;
+    }
 }

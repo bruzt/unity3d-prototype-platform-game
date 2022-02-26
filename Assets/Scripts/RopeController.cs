@@ -24,7 +24,7 @@ public class RopeController : MonoBehaviour
 
             //Physics.IgnoreCollision(node.GetComponent<Collider>(), newNode.GetComponent<Collider>());
             
-            newNode.GetComponent<Rigidbody>().mass *= 1.01f; 
+            //newNode.GetComponent<Rigidbody>().mass *= 1.01f; 
             newNode.GetComponent<RopeSegmentController>().IncreaseMaxXVelocity(size, i);
             newNode.GetComponent<RopeSegmentController>().DecreaseMaxZRotationDegree(size, i);
 

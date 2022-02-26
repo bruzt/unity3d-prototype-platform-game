@@ -30,12 +30,25 @@ public class RopeSegmentController : MonoBehaviour
         //LimitXPosition();
     }
 
-    void OnCollisionStay(Collision collision){
+    /*void OnCollisionStay(Collision collision){
         if(collision.gameObject.name.Contains("Player")) OnCollisionStayPlayer(collision);
     }
 
     void OnCollisionExit(Collision collision){
         if(collision.gameObject.name.Contains("Player")) OnCollisionExitPlayer(collision);
+    }*/
+
+    void OnTriggerEnter(Collider collider){
+        if(collider.name.Contains("PlayerLeft")) OnTriggerEnterPlayerLeft(collider);
+        if(collider.name.Contains("PlayerRight")) OnTriggerEnterPlayerRight(collider);
+    }
+
+    void OnTriggerStay(Collider collider){
+        if(collider.name.Contains("Player")) OnTriggerStayPlayer(collider);
+    }
+
+    void OnTriggerExit(Collider collider){
+        //if(collider.name.Contains("Player")) OnTriggerExitPlayer(collider);
     }
 
     void LimitXMaxVelocity(){
@@ -75,11 +88,60 @@ public class RopeSegmentController : MonoBehaviour
         maxZRotationDegree = degree;
     }
 
-    private void OnCollisionStayPlayer(Collision collision){
-        collision.gameObject.GetComponentInParent<PlayerController>().SetIsRopeSwinging(true);
+    /*private void OnCollisionStayPlayer(Collision collision){
+        PlayerController playerController;
+        playerController = collision.gameObject.GetComponentInParent<PlayerController>();
+        playerController.SetIsRopeSwinging(true);
+
+        PlayerInteraction playerInteraction;
+        playerInteraction = collision.gameObject.GetComponentInParent<PlayerInteraction>();
+
+        Vector3 attachVelocity = rigidBody.velocity;
+        attachVelocity.y = 0;
+        playerInteraction.SetRigibdodyVelocity(attachVelocity);
     }
 
     private void OnCollisionExitPlayer(Collision collision){
         collision.gameObject.GetComponentInParent<PlayerController>().SetIsRopeSwinging(false);
+    }*/
+
+    private void OnTriggerStayPlayer(Collider collider){
+        PlayerController playerController;
+        playerController = collider.GetComponentInParent<PlayerController>();
+        playerController.SetIsRopeSwinging(true);
+
+        PlayerInteraction playerInteraction;
+        playerInteraction = collider.GetComponentInParent<PlayerInteraction>();
+
+        Vector3 attachVelocity = rigidBody.velocity;
+        attachVelocity.y = 0;
+        playerInteraction.SetRigibdodyVelocity(attachVelocity);
+    }
+
+    private void OnTriggerExitPlayer(Collider collider){
+        collider.GetComponentInParent<PlayerController>().SetIsRopeSwinging(false);
+        
+        collider.GetComponentInParent<PlayerMovement>().SetIsCollidingWithRopeLeft(false);
+        collider.GetComponentInParent<PlayerMovement>().SetIsCollidingWithRopeRight(false);
+
+        /*SphereCollider[] sphereColliders = transform.parent.GetComponentsInChildren<SphereCollider>();
+        
+        foreach(SphereCollider sphereCollider in sphereColliders){
+            sphereCollider.enabled = true;
+        }*/
+    }
+
+    private void OnTriggerEnterPlayerLeft(Collider collider){
+        PlayerMovement playerMovement;
+        playerMovement = collider.GetComponentInParent<PlayerMovement>();
+
+        playerMovement.SetIsCollidingWithRopeLeft(true, this.gameObject);
+    }
+
+    private void OnTriggerEnterPlayerRight(Collider collider){
+        PlayerMovement playerMovement;
+        playerMovement = collider.GetComponentInParent<PlayerMovement>();
+
+        playerMovement.SetIsCollidingWithRopeRight(true, this.gameObject);
     }
 }
