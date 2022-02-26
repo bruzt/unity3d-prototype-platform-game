@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Vector2 inputDirection;
+    private bool inputJump;
     private PlayerMovement movement;
 
     [SerializeField] private bool isMoving = false;
@@ -22,16 +23,17 @@ public class PlayerController : MonoBehaviour
     {
         inputDirection.y = Input.GetAxis("Vertical");
         inputDirection.x = Input.GetAxis("Horizontal");
+        inputJump = Input.GetButtonDown("Jump");
 
         if(isMoving){
 
-            if(Input.GetButtonDown("Jump")) movement.Jump();
+            if(inputJump) movement.Jump();
         
             movement.Move(inputDirection);
 
         } else if(isRopeSwinging){
 
-            if(Input.GetButtonDown("Jump")) StartCoroutine(movement.JumpInRope());
+            if(inputJump) StartCoroutine(movement.JumpInRope());
 
             movement.MoveInRope(inputDirection);
         }

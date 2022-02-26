@@ -62,8 +62,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider collider){
-        if(collider.tag == "Ground") OnTriggerEnterGround();
-        if(collider.tag == "Water") OnTriggerEnterWater();
+        if(collider.tag.Contains("Ground")) OnTriggerEnterGround();
+        if(collider.tag.Contains("Water")) OnTriggerEnterWater();
         if(collider.name.Contains("Rope")) rigidBody.useGravity = false;
     }
 
@@ -313,6 +313,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(value) {
             //rigidBody.AddForce(-100,0,0);
+            //transform.SetParent(ropeSegmentGameObject.transform);
             ropeSegment = ropeSegmentGameObject;
         }
     }
@@ -322,6 +323,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(value) {
             //rigidBody.AddForce(100,0,0);
+            //transform.SetParent(ropeSegmentGameObject.transform);
             ropeSegment = ropeSegmentGameObject;
         }
     }
