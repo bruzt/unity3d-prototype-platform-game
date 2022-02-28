@@ -39,7 +39,6 @@
      <Compile Include="Assets/Scripts/PlayerInteraction.cs" />
      <Compile Include="Assets/Scripts/PlayerMovement.cs" />
      <Compile Include="Assets/Scripts/DestructibleBehavior.cs" />
-     <Compile Include="Assets/Scripts/RopeSegmentController.cs" />
      <Compile Include="Assets/Scripts/TrampolineController.cs" />
      <Compile Include="Assets/Scripts/UIController.cs" />
      <Compile Include="Assets/Scripts/CameraFallow.cs" />

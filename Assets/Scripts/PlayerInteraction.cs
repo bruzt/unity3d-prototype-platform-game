@@ -10,6 +10,7 @@ public class PlayerInteraction : MonoBehaviour
     [SerializeField] private GameObject lastWallJumped;
     [SerializeField] private bool isCollidingRight = false;
     [SerializeField] private bool isCollidingLeft = false;
+    [SerializeField] private bool isInRope = false;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +31,8 @@ public class PlayerInteraction : MonoBehaviour
         if(collider.name.Contains("Ground") && collider.name.Contains("Side") == false) {
             SetCleanTouchedJumpedWall();
         }
-        if(collider.name.Contains("Coin")) CoinCollision(collider.gameObject);
+        if(collider.name.Contains("Coin")) EnterCoin(collider.gameObject);
+        if(collider.name.Contains("RopeNode")) EnterRopeNode(collider);
     }
 
     void OnTriggerStay(Collider collider){
@@ -52,14 +54,14 @@ public class PlayerInteraction : MonoBehaviour
 
         if(
             trampoline != null && 
-            playerMovement.isInGround == false
+            playerMovement.GetIsInGround() == false
         ){
             rigidBody.velocity = Vector3.zero;
             playerMovement.JumpUp(trampoline.jumpForce);
         }
     }
 
-    public void CoinCollision(GameObject coin){
+    void EnterCoin(GameObject coin){
         if(coin.name.Contains("One")) GameController.AddCoin(1);
         if(coin.name.Contains("Ten")) GameController.AddCoin(10);
         
@@ -67,10 +69,25 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     void ExitGroundSide(){
-        isCollidingRight = false;
-        isCollidingLeft = false;
+        SetIsCollidingRight(false);
+        SetIsCollidingLeft(false);
         playerMovement.SetIsSliding(false);
-        //playerInteraction.SetCleanTouchedJumpedWall();
+    }
+
+    void EnterRopeNode(Collider ropeNodeCollider){
+
+        isInRope = true;
+
+        Collider[] colliders = ropeNodeCollider.transform.parent.GetComponentsInChildren<Collider>();
+
+        foreach(Collider collider in colliders){
+            collider.enabled = false;
+        }
+
+        playerMovement.SetRopeNode(ropeNodeCollider.gameObject);
+        playerMovement.SetJumpsMade(1);
+
+        //transform.SetParent(ropeNodeCollider.transform);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////
@@ -84,7 +101,7 @@ public class PlayerInteraction : MonoBehaviour
         return isCollidingRight;
     }
 
-    public void SetIsCollidingRight(bool value, GameObject gameObject){
+    public void SetIsCollidingRight(bool value, GameObject gameObject = null){
         isCollidingRight = value;
 
         if(value) SetLastWallTouched(gameObject);
@@ -94,7 +111,7 @@ public class PlayerInteraction : MonoBehaviour
         return isCollidingLeft;
     }
 
-    public void SetIsCollidingLeft(bool value,  GameObject gameObject){
+    public void SetIsCollidingLeft(bool value,  GameObject gameObject = null){
         isCollidingLeft = value;
 
         if(value) SetLastWallTouched(gameObject);
@@ -119,5 +136,13 @@ public class PlayerInteraction : MonoBehaviour
     public void SetCleanTouchedJumpedWall(){
         lastWallJumped = null;
         lastWallTouched = null;
+    }
+
+    public bool GetIsInRope(){
+        return isInRope;
+    }
+
+    public void SetIsInRope(bool value){
+        isInRope = value;
     }
 }
