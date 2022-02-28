@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    public Text coins;
+    private Text coins;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        coins = GetComponentInChildren<Text>();
     }
 
     // Update is called once per frame

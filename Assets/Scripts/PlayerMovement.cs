@@ -13,7 +13,6 @@ using UnityEngine;
     public float jumpForce = 1;
     public float horizontalJumpForce = 1;
     public float maxJumpSpeed = 1;
-    public float slideDownSpeed = 1;
 }
 
 [System.Serializable] public class Swimming {
@@ -33,10 +32,9 @@ public class PlayerMovement : MonoBehaviour
     public Transform playerModelTransform;
     public bool isLookingRight = true;
     public bool isInGround = true;
-    public bool isSliding = false;
+    [SerializeField] private bool isSliding = false;
     public bool isSwimming = false;
-    public bool isCollidingRight = false;
-    public bool isCollidingLeft = false;
+    
     public int totalJumps = 2;
     public int jumpsMade = 0;
     public CollisionPlayer collisionDistance;
@@ -62,17 +60,17 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider collider){
-        if(collider.tag.Contains("Ground")) OnTriggerEnterGround();
+        //if(collider.tag.Contains("Ground")) OnTriggerEnterGround();
         if(collider.tag.Contains("Water")) OnTriggerEnterWater();
         if(collider.name.Contains("Rope")) rigidBody.useGravity = false;
     }
 
     void OnTriggerStay(Collider collider){
-        if(collider.tag == "Ground") OnTriggerStayGround();
+        //if(collider.tag == "Ground") OnTriggerStayGround();
     }
 
     void OnTriggerExit(Collider collider){
-        if(collider.tag.Contains("Ground")) OnTriggerExitGround();
+        //if(collider.tag.Contains("Ground")) OnTriggerExitGround();
         if(collider.tag.Contains("Water")) OnTriggerExitWater();
         if(collider.name.Contains("Rope")) SetLeaveRope();
     }
@@ -134,38 +132,35 @@ public class PlayerMovement : MonoBehaviour
         RotatePlayerModel(input);
     }
 
-    void OnTriggerEnterGround(){
+    public void EnterGround(){
         isInGround = true;
         jumpsMade = 0;
     }
 
-    void OnTriggerStayGround(){
+    public void StaySideGround(Collider collider){
         isInGround = true;
+
+        ObstacleBehavior obstacleBehavior = collider.transform.parent.GetComponent<ObstacleBehavior>();
             
         if(rigidBody.velocity.y < 0) {
-            if(isCollidingRight){
+            isSliding = true;
+
+            if(playerInteraction.GetIsCollidingRight()){
                 RotatePlayerModel(new Vector2(-1,0));
                 
-            } else if(isCollidingLeft){
+            } else if(playerInteraction.GetIsCollidingLeft()){
                 RotatePlayerModel(new Vector2(1,0));
             }   
 
             isSliding = true;
-            rigidBody.velocity = new Vector3(0, -walking.slideDownSpeed, 0);
+            rigidBody.velocity = new Vector3(0, -obstacleBehavior.slideDownSpeed, 0);
 
         } else {
             isSliding = false;
         }
     }
 
-    void OnTriggerExitGround(){
-        isInGround = false;
-        isCollidingRight = false;
-        isCollidingLeft = false;
-        isSliding = false;
-        playerInteraction.lastWallTouched = null;
-        playerInteraction.wallJumped = null;
-    }
+    
 
     private void RotatePlayerModel(Vector2 input){
         if(input.x > 0){
@@ -187,8 +182,8 @@ public class PlayerMovement : MonoBehaviour
         } else if(
             (jumpsMade < totalJumps) && 
             (
-                (playerInteraction.lastWallTouched != playerInteraction.wallJumped) ||
-                (playerInteraction.lastWallTouched == null)
+                (playerInteraction.GetLastWallTouched() == null) ||
+                (playerInteraction.GetLastWallTouched() != playerInteraction.GetLastlastWallJumped())
             )
         ){
             if(isSliding) rigidBody.velocity = Vector3.zero;
@@ -242,7 +237,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void JumpUp(float jumpForce){
-        playerInteraction.wallJumped = playerInteraction.lastWallTouched;
+        playerInteraction.SetLastWallJumped();
 
         rigidBody.AddForce(0, jumpForce, 0/*, ForceMode.Acceleration*/);
 
@@ -250,49 +245,6 @@ public class PlayerMovement : MonoBehaviour
         jumpVelocity.y = Mathf.Clamp(jumpVelocity.y, -walking.maxJumpSpeed, walking.maxJumpSpeed);
         jumpVelocity.x = Mathf.Clamp(jumpVelocity.x, -walking.maxJumpSpeed, walking.maxJumpSpeed);
         rigidBody.velocity = jumpVelocity;
-    }
-
-    private void DetectHorizontalCollision(){
-        /*Vector3 upPosition = new Vector3(transform.position.x, transform.position.y + 0.9f, transform.position.z);
-        Vector3 downPosition = new Vector3(transform.position.x, transform.position.y - 0.9f, transform.position.z);
-
-        Debug.DrawRay(transform.position, Vector3.right * 0.80f, Color.red);
-        Debug.DrawRay(upPosition, Vector3.right * 0.80f, Color.red);
-        Debug.DrawRay(downPosition, Vector3.right * 0.80f, Color.red);
-
-        if (Physics.Raycast(transform.position, Vector3.right, 0.4569f) ||
-            Physics.Raycast(upPosition, Vector3.right, 0.4569f) ||
-            Physics.Raycast(downPosition, Vector3.right, 0.4569f)
-        ){
-            isCollidingRight = true;
-        }
-
-        if (Physics.Raycast(transform.position, Vector3.left, 0.4569f) ||
-            Physics.Raycast(upPosition, Vector3.left, 0.4569f) ||
-            Physics.Raycast(downPosition, Vector3.left, 0.4569f)
-        ){
-            isCollidingLeft = true;
-        }*/
-
-        /*RaycastHit hit;
-        Ray rightRay = new Ray(transform.position, Vector3.right);
-        Ray leftRay = new Ray(transform.position, Vector3.left);
-
-        //Debug.DrawRay(transform.position, Vector3.right);
-        //Debug.DrawRay(transform.position, Vector3.left);
-
-        if(Physics.Raycast(rightRay, out hit, collisionDistance.right)){
-            //if(hit.collider.tag == "Ground"){
-                isCollidingRight = true;
-            //}
-        
-        } 
-        
-        if(Physics.Raycast(leftRay, out hit, collisionDistance.left)){
-            //if(hit.collider.tag == "Ground"){
-                isCollidingLeft = true;
-            //}
-        }*/
     }
 
     void OnTriggerEnterWater(){
@@ -308,8 +260,16 @@ public class PlayerMovement : MonoBehaviour
         rigidBody.useGravity = true;
     }  
 
+    public bool GetIsSliding(){
+        return isSliding;
+    }
+
+    public void SetIsSliding(bool value){
+        isSliding = value;
+    }
+
     public void SetIsCollidingWithRopeLeft(bool value, GameObject ropeSegmentGameObject = null){
-        isCollidingLeft = value;
+        //isCollidingLeft = value;
 
         if(value) {
             //rigidBody.AddForce(-100,0,0);
@@ -319,7 +279,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void SetIsCollidingWithRopeRight(bool value, GameObject ropeSegmentGameObject = null){
-        isCollidingRight = value;
+        //isCollidingRight = value;
 
         if(value) {
             //rigidBody.AddForce(100,0,0);
@@ -333,5 +293,9 @@ public class PlayerMovement : MonoBehaviour
         GetComponentInParent<PlayerController>().SetIsRopeSwinging(false);
         SetIsCollidingWithRopeLeft(false);
         SetIsCollidingWithRopeRight(false);
+    }
+
+    public void SetIsInGround(bool value){
+        isInGround = value;
     }
 }
