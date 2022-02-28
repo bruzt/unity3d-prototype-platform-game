@@ -274,7 +274,7 @@ public class PlayerMovement : MonoBehaviour
             isCollidingLeft = true;
         }*/
 
-        RaycastHit hit;
+        /*RaycastHit hit;
         Ray rightRay = new Ray(transform.position, Vector3.right);
         Ray leftRay = new Ray(transform.position, Vector3.left);
 
@@ -292,7 +292,7 @@ public class PlayerMovement : MonoBehaviour
             //if(hit.collider.tag == "Ground"){
                 isCollidingLeft = true;
             //}
-        }
+        }*/
     }
 
     void OnTriggerEnterWater(){
