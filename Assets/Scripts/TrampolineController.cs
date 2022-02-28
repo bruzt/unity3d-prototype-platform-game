@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TrampolineController : MonoBehaviour
 {
-    public float jumpForce = 1;
+    public float jumpForce = 20000;
 
     // Start is called before the first frame update
     void Start()

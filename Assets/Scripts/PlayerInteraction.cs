@@ -56,6 +56,7 @@ public class PlayerInteraction : MonoBehaviour
             trampoline != null && 
             playerMovement.GetIsInGround() == false
         ){
+            playerMovement.SetJumpsMade(1);
             rigidBody.velocity = Vector3.zero;
             playerMovement.JumpUp(trampoline.jumpForce);
         }
