@@ -8,14 +8,12 @@ public class PlayerController : MonoBehaviour
     private bool inputJump;
     private PlayerMovement playerMovement;
     private PlayerInteraction playerInteraction;
-    //[SerializeField] private bool isMoving;
 
     // Start is called before the first frame update
     void Start()
     {
         playerMovement = GetComponent<PlayerMovement>();
         playerInteraction = GetComponent<PlayerInteraction>();
-        //isMoving = true;
     }
 
     // Update is called once per frame
@@ -41,18 +39,4 @@ public class PlayerController : MonoBehaviour
             playerMovement.Move(inputDirection);
         }
     }
-
-    /*public bool GetIsMoving(){
-        return isMoving;
-    }
-
-    public void SetIsMoving(bool value){
-        isMoving = value;
-        playerInteraction.SetIsInRope(!value);
-    }
-
-    public void SetIsRopeSwinging(bool value){
-        isMoving = !value;
-        playerInteraction.SetIsInRope(value);
-    }*/
 }

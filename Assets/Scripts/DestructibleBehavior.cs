@@ -7,7 +7,7 @@ public class DestructibleBehavior : MonoBehaviour
     private int hitPoints;
 
     public string[] destructedByCollidersName;
-    public int totalHitPoints = 100;
+    public int totalHitPoints = 1;
     public float timeToDestroy;
     public int ForceUpOnHit = 10000;
 
@@ -24,9 +24,12 @@ public class DestructibleBehavior : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other){
+        Rigidbody otherRigidbody = other.GetComponentInParent<Rigidbody>();
+
         foreach(string colliderName in destructedByCollidersName){
             if(other.name.Contains(colliderName)) {
-                other.GetComponentInParent<Rigidbody>().AddForce(0, ForceUpOnHit,0);
+                otherRigidbody.velocity = new Vector3(otherRigidbody.velocity.x, 0, 0);
+                otherRigidbody.AddForce(0, ForceUpOnHit,0);
                 ApplyDamage(1);
             }
         }

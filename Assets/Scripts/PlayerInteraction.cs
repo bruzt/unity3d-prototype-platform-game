@@ -36,6 +36,7 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     void OnTriggerStay(Collider collider){
+        if(collider.name.Contains("Ground")) playerMovement.SetIsInGround(true);
         if(collider.name.Contains("Side")) playerMovement.StaySideGround(collider);
         if(collider.name.Contains("RightSide")) SetIsCollidingLeft(true, collider.gameObject);
         if(collider.name.Contains("LeftSide")) SetIsCollidingRight(true, collider.gameObject);

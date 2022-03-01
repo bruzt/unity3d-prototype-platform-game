@@ -50,23 +50,19 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        //DetectHorizontalCollision();
+        
     }
 
     void OnTriggerEnter(Collider collider){
-        //if(collider.tag.Contains("Ground")) OnTriggerEnterGround();
         if(collider.tag.Contains("Water")) EnterWater();
-        //if(collider.name.Contains("Rope")) rigidBody.useGravity = false;
     }
 
     void OnTriggerStay(Collider collider){
-        //if(collider.tag == "Ground") OnTriggerStayGround();
+
     }
 
     void OnTriggerExit(Collider collider){
-        //if(collider.tag.Contains("Ground")) OnTriggerExitGround();
         if(collider.tag.Contains("Water")) ExitWater();
-        //if(collider.name.Contains("Rope")) SetLeaveRope();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -160,18 +156,18 @@ public class PlayerMovement : MonoBehaviour
         ){
             if(isSliding) rigidBody.velocity = Vector3.zero;
 
-            /*if(isSliding && isCollidingRight){
+            /*if(isSliding && playerInteraction.GetIsCollidingRight()){
                 //transform.Translate(0, 0, 0);
 
-                //rigidBody.AddForce(-walking.horizontalJumpForce, walking.jumpForce, 0);
+                rigidBody.AddForce(-walking.horizontalJumpForce, walking.jumpForce, 0);
                 RotatePlayerModel(new Vector2(-1,0));
                 
-            } else if(isSliding && isCollidingLeft){
+            } else if(isSliding && playerInteraction.GetIsCollidingLeft()){
                 //transform.Translate(0, 0, 0);
 
-                //rigidBody.AddForce(walking.horizontalJumpForce, walking.jumpForce, 0);
+                rigidBody.AddForce(walking.horizontalJumpForce, walking.jumpForce, 0);
                 RotatePlayerModel(new Vector2(1,0));
-            } */
+            }*/
                 
             JumpUp(walking.jumpForce);
 
@@ -183,18 +179,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(ropeNodeGameObject != null){
 
-            SetLeaveRope();
-
             Collider[] colliders = ropeNodeGameObject.transform.parent.GetComponentsInChildren<Collider>();
-
-            /*foreach(SphereCollider sphereCollider in sphereColliders){
-                sphereCollider.enabled = false;
-            }*/
-
-            //GetComponentInParent<PlayerController>().SetIsRopeSwinging(false);
-        
-            /*SetIsCollidingWithRopeLeft(false);
-            SetIsCollidingWithRopeRight(false);*/
 
             playerInteraction.SetIsInRope(false);
 
@@ -219,6 +204,16 @@ public class PlayerMovement : MonoBehaviour
         jumpVelocity.y = Mathf.Clamp(jumpVelocity.y, -walking.maxJumpSpeed, walking.maxJumpSpeed);
         jumpVelocity.x = Mathf.Clamp(jumpVelocity.x, -walking.maxJumpSpeed, walking.maxJumpSpeed);
         rigidBody.velocity = jumpVelocity;
+    }
+
+    private void RotatePlayerModel(Vector2 input){
+        if(input.x > 0){
+            isLookingRight = true;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+        } else if(input.x < 0) {
+            isLookingRight = false;
+            transform.rotation = Quaternion.Euler(0, -180, 0);
+        }
     }
 
     public void EnterGround(){
@@ -249,22 +244,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void RotatePlayerModel(Vector2 input){
-        if(input.x > 0){
-            isLookingRight = true;
-            transform.rotation = Quaternion.Euler(0, 0, 0);
-        } else if(input.x < 0) {
-            isLookingRight = false;
-            transform.rotation = Quaternion.Euler(0, -180, 0);
-        }
-    }
-
     void EnterWater(){
         isSwimming = true;
         jumpsMade = 0;
 
         rigidBody.useGravity = false;
-        rigidBody.velocity = new Vector3(0 ,swimming.gravity ,0);
+        rigidBody.velocity = new Vector3(0, swimming.gravity ,0);
     }   
 
     void ExitWater(){
@@ -281,33 +266,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetIsSliding(bool value){
         isSliding = value;
-    }
-
-    public void SetIsCollidingWithRopeLeft(bool value, GameObject ropeSegmentGameObject = null){
-        //isCollidingLeft = value;
-
-        if(value) {
-            //rigidBody.AddForce(-100,0,0);
-            //transform.SetParent(ropeSegmentGameObject.transform);
-            ropeNodeGameObject = ropeSegmentGameObject;
-        }
-    }
-
-    public void SetIsCollidingWithRopeRight(bool value, GameObject ropeSegmentGameObject = null){
-        //isCollidingRight = value;
-
-        if(value) {
-            //rigidBody.AddForce(100,0,0);
-            //transform.SetParent(ropeSegmentGameObject.transform);
-            ropeNodeGameObject = ropeSegmentGameObject;
-        }
-    }
-
-    void SetLeaveRope(){
-        rigidBody.useGravity = true;
-        //GetComponentInParent<PlayerController>().SetIsRopeSwinging(false);
-        SetIsCollidingWithRopeLeft(false);
-        SetIsCollidingWithRopeRight(false);
     }
 
     public void SetIsInGround(bool value){
