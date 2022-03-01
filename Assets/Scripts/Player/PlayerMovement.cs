@@ -169,7 +169,7 @@ public class PlayerMovement : MonoBehaviour
                 RotatePlayerModel(new Vector2(1,0));
             }*/
                 
-            JumpUp(walking.jumpForce);
+            JumpUp();
 
             jumpsMade++;
         }
@@ -183,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
 
             playerInteraction.SetIsInRope(false);
 
-            JumpUp(walking.jumpForce);
+            JumpUp();
 
             yield return new WaitForSeconds(1);
 
@@ -193,6 +193,10 @@ public class PlayerMovement : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    public void JumpUp(){
+        JumpUp(walking.jumpForce);
     }
 
     public void JumpUp(float jumpForce){

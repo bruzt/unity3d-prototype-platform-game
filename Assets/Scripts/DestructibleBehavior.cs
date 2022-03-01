@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class DestructibleBehavior : MonoBehaviour
 {
-    private int hitPoints;
+    private int currentHitPoints;
 
-    public string[] destructedByCollidersName;
+    public List<string> takesDamageOf;
     public int totalHitPoints = 1;
     public float timeToDestroy;
     public int ForceUpOnHit = 10000;
@@ -14,7 +14,7 @@ public class DestructibleBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hitPoints = totalHitPoints;
+        currentHitPoints = totalHitPoints;
     }
 
     // Update is called once per frame
@@ -26,7 +26,7 @@ public class DestructibleBehavior : MonoBehaviour
     void OnTriggerEnter(Collider other){
         Rigidbody otherRigidbody = other.GetComponentInParent<Rigidbody>();
 
-        foreach(string colliderName in destructedByCollidersName){
+        foreach(string colliderName in takesDamageOf){
             if(other.name.Contains(colliderName)) {
                 otherRigidbody.velocity = new Vector3(otherRigidbody.velocity.x, 0, 0);
                 otherRigidbody.AddForce(0, ForceUpOnHit,0);
@@ -38,9 +38,11 @@ public class DestructibleBehavior : MonoBehaviour
     ////////////////////////////////////
 
     void ApplyDamage(int damage){
-        hitPoints -= damage;
+        currentHitPoints -= damage;
 
-        if(hitPoints <= 0) Destroy();
+        transform.localScale = new Vector3(1, 0.5f, 1);
+
+        if(currentHitPoints <= 0) Destroy();
     }
 
     void Destroy(){

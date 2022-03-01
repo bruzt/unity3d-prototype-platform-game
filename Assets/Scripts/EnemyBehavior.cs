@@ -15,4 +15,17 @@ public class EnemyBehavior : MonoBehaviour
     {
         
     }
+
+    void OnTriggerEnter(Collider collider){
+        if(collider.name.Contains("PlayerBody")) EnterPlayer(collider);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
+
+    void EnterPlayer(Collider playerCollider){
+        PlayerLife playerLife = playerCollider.GetComponentInParent<PlayerLife>();
+    
+        playerLife.ApplyDamage();
+    }
 }

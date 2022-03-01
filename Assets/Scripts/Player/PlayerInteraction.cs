@@ -53,6 +53,8 @@ public class PlayerInteraction : MonoBehaviour
     void EnterTrampoline(Collider collider){
         TrampolineController trampoline = collider.GetComponent<TrampolineController>();
 
+        SetCleanTouchedJumpedWall();
+
         if(
             trampoline != null && 
             playerMovement.GetIsInGround() == false
@@ -87,6 +89,7 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         playerMovement.SetRopeNode(ropeNodeCollider.gameObject);
+        SetCleanTouchedJumpedWall();
         playerMovement.SetJumpsMade(1);
 
         //transform.SetParent(ropeNodeCollider.transform);
