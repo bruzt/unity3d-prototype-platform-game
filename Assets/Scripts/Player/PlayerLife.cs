@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerLife : MonoBehaviour
 {
-    private Rigidbody rigidbody;
+    private Rigidbody playerRigidbody;
     private PlayerMovement playerMovement;
     private Renderer[] playerModelRenderers;
     private Collider[] playerColliders;
@@ -20,7 +20,7 @@ public class PlayerLife : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        playerRigidbody = GetComponent<Rigidbody>();
         playerMovement = GetComponent<PlayerMovement>();
         playerModelRenderers = transform.Find("Model").GetComponentsInChildren<Renderer>();
         playerColliders = GetComponentsInChildren<Collider>();
@@ -51,7 +51,7 @@ public class PlayerLife : MonoBehaviour
 
             if(currentHitPoints < 1) {
                 SetIsAlive(false); 
-                rigidbody.velocity = Vector3.zero;
+                playerRigidbody.velocity = Vector3.zero;
             }
             else playerMovement.JumpUp();
         }

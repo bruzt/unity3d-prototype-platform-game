@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody rigidBody; 
     private PlayerInteraction playerInteraction;
+    private PlayerAttack playerAttack;
     private GameObject ropeNodeGameObject;
     private float inRopeY;
 
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody>();
         playerInteraction = GetComponent<PlayerInteraction>(); 
+        playerAttack = GetComponent<PlayerAttack>();
     }
 
     // Update is called once per frame
@@ -88,15 +90,17 @@ public class PlayerMovement : MonoBehaviour
 
             rigidBody.AddForce(new Vector3(input.x, input.y, 0) * walking.moveForce);
 
-            Vector3 maxVelocity = rigidBody.velocity;
+            if(playerAttack.GetIsAttacking() == false){
+                Vector3 maxVelocity = rigidBody.velocity;
 
-            if(isInGround){
-                maxVelocity.x = Mathf.Clamp(maxVelocity.x, -walking.maxSpeed * -input.x, walking.maxSpeed * input.x);
-            } else {
-                maxVelocity.x = Mathf.Clamp(maxVelocity.x, -walking.maxSpeed, walking.maxSpeed);
+                if(isInGround){
+                    maxVelocity.x = Mathf.Clamp(maxVelocity.x, -walking.maxSpeed * -input.x, walking.maxSpeed * input.x);
+                } else {
+                    maxVelocity.x = Mathf.Clamp(maxVelocity.x, -walking.maxSpeed, walking.maxSpeed);
+                }
+                
+                rigidBody.velocity = maxVelocity;
             }
-            
-            rigidBody.velocity = maxVelocity;
 
             RotatePlayerModel(input);
         }
