@@ -27,9 +27,9 @@ public class DestructibleBehavior : MonoBehaviour
         Rigidbody otherRigidbody = other.GetComponentInParent<Rigidbody>();
 
         foreach(string colliderName in takesDamageOf){
-            if(other.name.Contains(colliderName)) {
+            if(other.name.Contains(colliderName) && currentHitPoints > 0) {
                 otherRigidbody.velocity = new Vector3(otherRigidbody.velocity.x, 0, 0);
-                otherRigidbody.AddForce(0, ForceUpOnHit,0);
+                if(colliderName.Contains("Foot")) otherRigidbody.AddForce(0, ForceUpOnHit,0);
                 ApplyDamage(1);
             }
         }
@@ -46,7 +46,7 @@ public class DestructibleBehavior : MonoBehaviour
     }
 
     void Destroy(){
-        GetComponent<Rigidbody>().constraints =  RigidbodyConstraints.FreezePositionY;
+        GetComponent<Rigidbody>().constraints =  RigidbodyConstraints.FreezePosition;
         GetComponentInChildren<Collider>().enabled = false;
         Destroy(gameObject, timeToDestroy);
     }

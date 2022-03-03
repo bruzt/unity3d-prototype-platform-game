@@ -91,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eac2215da83391b3880f3dfe7409d660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slideDownSpeed: 2
+  slideDownSpeed: 4
 --- !u!1 &6778897499053801772
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private Rigidbody playerRigidbody;
+    private TrailRenderer trailRenderer;
+    private Collider playerDashCollider;
     private float currentAttackRate;
     private float currentAttackDuration;
 
@@ -17,8 +19,12 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
+        trailRenderer = GetComponentInChildren<TrailRenderer>();
+        playerDashCollider = transform.Find("PlayerDashCollider").GetComponent<Collider>();
         currentAttackRate = attackRate;
         currentAttackDuration = attackDuration;
+        trailRenderer.time = attackDuration;
+        trailRenderer.widthMultiplier = 1.5f;
     }
 
     // Update is called once per frame
@@ -26,6 +32,15 @@ public class PlayerAttack : MonoBehaviour
     {
         currentAttackRate += Time.deltaTime;
         currentAttackDuration += Time.deltaTime;
+
+        if(GetIsAttacking()) {
+            trailRenderer.emitting = true;
+            playerDashCollider.enabled = true;
+        }
+        else {
+            trailRenderer.emitting = false;
+            playerDashCollider.enabled = false;
+        }
     }
 
     ///////////////////////////////////////////////////////////////////

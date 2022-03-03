@@ -6,6 +6,7 @@ public class PlayerLife : MonoBehaviour
 {
     private Rigidbody playerRigidbody;
     private PlayerMovement playerMovement;
+    private PlayerAttack playerAttack;
     private Renderer[] playerModelRenderers;
     private Collider[] playerColliders;
     [SerializeField] private int currentHitPoints;
@@ -22,6 +23,7 @@ public class PlayerLife : MonoBehaviour
     {
         playerRigidbody = GetComponent<Rigidbody>();
         playerMovement = GetComponent<PlayerMovement>();
+        playerAttack = GetComponent<PlayerAttack>();
         playerModelRenderers = transform.Find("Model").GetComponentsInChildren<Renderer>();
         playerColliders = GetComponentsInChildren<Collider>();
         currentHitPoints = totalHitPoints;
@@ -45,7 +47,7 @@ public class PlayerLife : MonoBehaviour
     ////////////////////////////////////////////////////////////////////////////////
 
     public void ApplyDamage(){
-        if(GetIsInvencible() == false){
+        if(GetIsInvencible() == false && playerAttack.GetIsAttacking() == false){
             currentHitPoints--;
             currentTimeInvencible = 0;
 
