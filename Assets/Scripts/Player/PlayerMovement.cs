@@ -23,13 +23,9 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody rigidBody; 
     private PlayerInteraction playerInteraction;
     private PlayerAttack playerAttack;
-    private GameObject ropeNodeGameObject;
     private float inRopeY;
 
     [SerializeField] private bool isLookingRight = true;
-    [SerializeField] private bool isInGround = true;
-    [SerializeField] private bool isSliding = false;
-    [SerializeField] private bool isSwimming = false;
     
     [SerializeField] private int totalJumps = 2;
     [SerializeField] private int jumpsMade = 0;
@@ -56,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider collider){
-        if(collider.tag.Contains("Water")) EnterWater();
+        
     }
 
     void OnTriggerStay(Collider collider){
@@ -64,14 +60,14 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void OnTriggerExit(Collider collider){
-        if(collider.tag.Contains("Water")) ExitWater();
+        
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////
 
     public void Move(Vector2 input){
-        if(isSwimming){
+        if(playerInteraction.GetIsSwimming()){
             rigidBody.AddForce(new Vector3(input.x, input.y, 0) * swimming.swimForce);
 
             if(rigidBody.position.y > -0.66 /*&& input.y == 0*/) input.y = -0.5f;
@@ -93,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
             if(playerAttack.GetIsAttacking() == false){
                 Vector3 maxVelocity = rigidBody.velocity;
 
-                if(isInGround){
+                if(playerInteraction.GetIsInGround()){
                     maxVelocity.x = Mathf.Clamp(maxVelocity.x, -walking.maxSpeed * -input.x, walking.maxSpeed * input.x);
                 } else {
                     maxVelocity.x = Mathf.Clamp(maxVelocity.x, -walking.maxSpeed, walking.maxSpeed);
@@ -110,9 +106,9 @@ public class PlayerMovement : MonoBehaviour
         
         RotatePlayerModel(input);
 
-        transform.position = ropeNodeGameObject.transform.position;
+        transform.position = playerInteraction.GetRopeNode().transform.position;
 
-        Rigidbody ropeNodeRigidbody = ropeNodeGameObject.GetComponent<Rigidbody>();
+        Rigidbody ropeNodeRigidbody = playerInteraction.GetRopeNode().GetComponent<Rigidbody>();
 
         ropeNodeRigidbody.AddForce(new Vector3(input.x, 0, 0) * walking.moveForce/*, ForceMode.Acceleration*/);
 
@@ -126,28 +122,28 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void MoveInRopeY(float inputY){
-        Transform[] nodes = ropeNodeGameObject.transform.parent.GetComponentsInChildren<Transform>();
+        Transform[] nodes = playerInteraction.GetRopeNode().transform.parent.GetComponentsInChildren<Transform>();
 
         int index = 0;
         int nodesLength = nodes.Length;
 
         for(int i=0; i < nodesLength; i++){
-            if(nodes[i].name == ropeNodeGameObject.name){
+            if(nodes[i].name == playerInteraction.GetRopeNode().name){
                 index = i;
                 break;
             } 
         }
 
-        if(inputY > 0 && index > 1 && inRopeY == 0) ropeNodeGameObject = nodes[index - 1].gameObject;
-        else if(inputY < 0 && index < nodesLength - 1 && inRopeY == 0) ropeNodeGameObject = nodes[index + 1].gameObject;
+        if(inputY > 0 && index > 1 && inRopeY == 0) playerInteraction.SetRopeNode(nodes[index - 1].gameObject);
+        else if(inputY < 0 && index < nodesLength - 1 && inRopeY == 0) playerInteraction.SetRopeNode(nodes[index + 1].gameObject);
 
         inRopeY = inputY;
     }
     
     public void Jump(){
-        if(isSwimming){
+        if(playerInteraction.GetIsSwimming()){
             if(rigidBody.position.y >= -1){
-                isSwimming = false;
+                playerInteraction.SetIsSwimming(false);
                 JumpUp(swimming.jumpForce);
             }
 
@@ -158,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
                 (playerInteraction.GetLastWallTouched() != playerInteraction.GetLastlastWallJumped())
             )
         ){
-            if(isSliding) rigidBody.velocity = Vector3.zero;
+            if(playerInteraction.GetIsSwimming()) rigidBody.velocity = Vector3.zero;
 
             /*if(isSliding && playerInteraction.GetIsCollidingRight()){
                 //transform.Translate(0, 0, 0);
@@ -181,9 +177,9 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator JumpInRope(){
 
-        if(ropeNodeGameObject != null){
+        if(playerInteraction.GetRopeNode() != null){
 
-            Collider[] colliders = ropeNodeGameObject.transform.parent.GetComponentsInChildren<Collider>();
+            Collider[] colliders = playerInteraction.GetRopeNode().transform.parent.GetComponentsInChildren<Collider>();
 
             playerInteraction.SetIsInRope(false);
 
@@ -214,7 +210,7 @@ public class PlayerMovement : MonoBehaviour
         rigidBody.velocity = jumpVelocity;
     }
 
-    private void RotatePlayerModel(Vector2 input){
+    public void RotatePlayerModel(Vector2 input){
         if(input.x > 0){
             isLookingRight = true;
             transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -224,71 +220,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void EnterGround(){
-        isInGround = true;
-        jumpsMade = 0;
-    }
-
-    public void StaySideGround(Collider collider){
-        isInGround = true;
-
-        ObstacleBehavior obstacleBehavior = collider.transform.parent.GetComponent<ObstacleBehavior>();
-            
-        if(rigidBody.velocity.y < 0) {
-            isSliding = true;
-
-            if(playerInteraction.GetIsCollidingRight()){
-                RotatePlayerModel(new Vector2(-1,0));
-                
-            } else if(playerInteraction.GetIsCollidingLeft()){
-                RotatePlayerModel(new Vector2(1,0));
-            }   
-
-            isSliding = true;
-            rigidBody.velocity = new Vector3(0, -obstacleBehavior.slideDownSpeed, 0);
-
-        } else {
-            isSliding = false;
-        }
-    }
-
-    void EnterWater(){
-        isSwimming = true;
-        jumpsMade = 0;
-
-        rigidBody.useGravity = false;
-        rigidBody.velocity = new Vector3(0, swimming.gravity ,0);
-    }   
-
-    void ExitWater(){
-        isSwimming = false;
-        rigidBody.useGravity = true;
-    }  
-
     ////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////
-
-    public bool GetIsSliding(){
-        return isSliding;
-    }
-
-    public void SetIsSliding(bool value){
-        isSliding = value;
-    }
-
-    public void SetIsInGround(bool value){
-        isInGround = value;
-    }
-
-    public void SetRopeNode(GameObject node){
-        ropeNodeGameObject = node;
-    }
-
-    public bool GetIsInGround(){
-        return isInGround;
-    }
 
     public void SetJumpsMade(int value){
         jumpsMade = value;
+    }
+
+    public Swimming GetSwimmingMovement(){
+        return swimming;
     }
 }

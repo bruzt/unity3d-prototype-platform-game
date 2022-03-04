@@ -6,11 +6,15 @@ public class PlayerInteraction : MonoBehaviour
 {
     private Rigidbody rigidBody;
     private PlayerMovement playerMovement;
+    private GameObject ropeNodeGameObject;
     [SerializeField] private GameObject lastWallTouched;
     [SerializeField] private GameObject lastWallJumped;
     [SerializeField] private bool isCollidingRight = false;
     [SerializeField] private bool isCollidingLeft = false;
     [SerializeField] private bool isInRope = false;
+    [SerializeField] private bool isInGround = true;
+    [SerializeField] private bool isSwimming = false;
+    [SerializeField] private bool isSliding = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,8 +30,9 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider collider){
+        if(collider.tag.Contains("Water")) EnterWater();
         if(collider.name.Contains("Trampoline")) EnterTrampoline(collider);
-        if(collider.name.Contains("Ground")) playerMovement.EnterGround();
+        if(collider.name.Contains("Ground")) EnterGround();
         if(collider.name.Contains("Ground") && collider.name.Contains("Side") == false) {
             SetCleanTouchedJumpedWall();
         }
@@ -36,14 +41,15 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     void OnTriggerStay(Collider collider){
-        if(collider.name.Contains("Ground")) playerMovement.SetIsInGround(true);
-        if(collider.name.Contains("Side")) playerMovement.StaySideGround(collider);
+        if(collider.name.Contains("Ground")) isInGround = true;
+        if(collider.name.Contains("Side")) StaySideGround(collider);
         if(collider.name.Contains("RightSide")) SetIsCollidingLeft(true, collider.gameObject);
         if(collider.name.Contains("LeftSide")) SetIsCollidingRight(true, collider.gameObject);
     }
 
     void OnTriggerExit(Collider collider){
-        if(collider.name.Contains("Ground")) playerMovement.SetIsInGround(false);
+        if(collider.tag.Contains("Water")) ExitWater();
+        if(collider.name.Contains("Ground")) isInGround = false;
         if(collider.name.Contains("Side")) ExitGroundSide();
     }
 
@@ -57,7 +63,7 @@ public class PlayerInteraction : MonoBehaviour
 
         if(
             trampoline != null && 
-            playerMovement.GetIsInGround() == false
+            isInGround == false
         ){
             playerMovement.SetJumpsMade(1);
             rigidBody.velocity = Vector3.zero;
@@ -72,10 +78,51 @@ public class PlayerInteraction : MonoBehaviour
         GameObject.Destroy(coin);
     }
 
+    void EnterGround(){
+        isInGround = true;
+        playerMovement.SetJumpsMade(0);
+    }
+
     void ExitGroundSide(){
         SetIsCollidingRight(false);
         SetIsCollidingLeft(false);
-        playerMovement.SetIsSliding(false);
+        SetIsSliding(false);
+    }
+
+    void EnterWater(){
+        isSwimming = true;
+        playerMovement.SetJumpsMade(0);
+
+        rigidBody.useGravity = false;
+        rigidBody.velocity = new Vector3(0, playerMovement.GetSwimmingMovement().gravity ,0);
+    }   
+
+    void ExitWater(){
+        isSwimming = false;
+        rigidBody.useGravity = true;
+    }  
+
+    void StaySideGround(Collider collider){
+        isInGround = true;
+
+        ObstacleBehavior obstacleBehavior = collider.transform.parent.GetComponent<ObstacleBehavior>();
+            
+        if(rigidBody.velocity.y < 0) {
+            isSliding = true;
+
+            if(GetIsCollidingRight()){
+                playerMovement.RotatePlayerModel(new Vector2(-1,0));
+                
+            } else if(GetIsCollidingLeft()){
+                playerMovement.RotatePlayerModel(new Vector2(1,0));
+            }   
+
+            isSliding = true;
+            rigidBody.velocity = new Vector3(0, -obstacleBehavior.slideDownSpeed, 0);
+
+        } else {
+            isSliding = false;
+        }
     }
 
     void EnterRopeNode(Collider ropeNodeCollider){
@@ -88,7 +135,7 @@ public class PlayerInteraction : MonoBehaviour
             collider.enabled = false;
         }
 
-        playerMovement.SetRopeNode(ropeNodeCollider.gameObject);
+        ropeNodeGameObject = ropeNodeCollider.gameObject;
         SetCleanTouchedJumpedWall();
         playerMovement.SetJumpsMade(1);
 
@@ -149,5 +196,37 @@ public class PlayerInteraction : MonoBehaviour
 
     public void SetIsInRope(bool value){
         isInRope = value;
+    }
+
+    public bool GetIsSliding(){
+        return isSliding;
+    }
+
+    public void SetIsSliding(bool value){
+        isSliding = value;
+    }
+
+    public bool GetIsInGround(){
+        return isInGround;
+    }
+
+    public void SetIsInGround(bool value){
+        isInGround = value;
+    }
+
+    public bool GetIsSwimming(){
+        return isSwimming;
+    }
+
+    public void SetIsSwimming(bool value){
+        isSwimming = value;
+    }
+
+    public GameObject GetRopeNode(){
+        return ropeNodeGameObject;
+    }
+
+    public void SetRopeNode(GameObject newRopeNode){
+        ropeNodeGameObject = newRopeNode;
     }
 }

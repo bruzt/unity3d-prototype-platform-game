@@ -5,8 +5,10 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     private Rigidbody playerRigidbody;
+    private PlayerLife playerLife;
     private TrailRenderer trailRenderer;
     private Collider playerDashCollider;
+    private Collider playerFootCollider;
     private float currentAttackRate;
     private float currentAttackDuration;
 
@@ -19,8 +21,10 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         playerRigidbody = GetComponent<Rigidbody>();
+        playerLife = GetComponent<PlayerLife>();
         trailRenderer = GetComponentInChildren<TrailRenderer>();
         playerDashCollider = transform.Find("PlayerDashCollider").GetComponent<Collider>();
+        playerFootCollider = transform.Find("PlayerFootCollider").GetComponent<Collider>();
         currentAttackRate = attackRate;
         currentAttackDuration = attackDuration;
         trailRenderer.time = attackDuration;
@@ -35,11 +39,11 @@ public class PlayerAttack : MonoBehaviour
 
         if(GetIsAttacking()) {
             trailRenderer.emitting = true;
-            playerDashCollider.enabled = true;
+            SetPlayerAttackColliders(true);
         }
         else {
             trailRenderer.emitting = false;
-            playerDashCollider.enabled = false;
+            SetPlayerAttackColliders(false);
         }
     }
 
@@ -63,5 +67,19 @@ public class PlayerAttack : MonoBehaviour
 
     public bool GetIsAttacking(){
         return currentAttackDuration < attackDuration;
+    }
+
+    public void SetPlayerDashCollider(bool value){
+        playerDashCollider.enabled = value;
+    }
+
+        public void SetPlayerFootCollider(bool value){
+        playerFootCollider.enabled = value;
+    }
+
+    void SetPlayerAttackColliders(bool value){
+        SetPlayerDashCollider(value);
+        SetPlayerFootCollider(!value);
+        playerLife.SetPlayerBodyCollider(!value);
     }
 }

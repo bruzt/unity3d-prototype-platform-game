@@ -8,15 +8,15 @@ public class PlayerLife : MonoBehaviour
     private PlayerMovement playerMovement;
     private PlayerAttack playerAttack;
     private Renderer[] playerModelRenderers;
-    private Collider[] playerColliders;
-    [SerializeField] private int currentHitPoints;
+    private Collider playerBodyCollider;
+    private int currentHitPoints;
     private float currentTimeInvencible = 0;
     private bool isBlinking = false;
     private bool isAlive = true;
 
-    public int totalHitPoints = 3;
-    public float timeInvencible = 1;
-    public float blinkIntervalTime = 0.2f;
+    [SerializeField] private int totalHitPoints = 3;
+    [SerializeField] private float timeInvencible = 1;
+    [SerializeField] private float blinkIntervalTime = 0.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,7 @@ public class PlayerLife : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         playerAttack = GetComponent<PlayerAttack>();
         playerModelRenderers = transform.Find("Model").GetComponentsInChildren<Renderer>();
-        playerColliders = GetComponentsInChildren<Collider>();
+        playerBodyCollider = transform.Find("PlayerBodyCollider").GetComponent<Collider>();
         currentHitPoints = totalHitPoints;
         currentTimeInvencible = timeInvencible;
     }
@@ -38,7 +38,6 @@ public class PlayerLife : MonoBehaviour
         if(GetIsInvencible()) {
             if(isBlinking == false) StartCoroutine(BlinkDamagedInvencibility());   
         } else {
-            SetPlayerModelVisible(true);
             isBlinking = false;
         }
     }
@@ -63,7 +62,7 @@ public class PlayerLife : MonoBehaviour
 
         isBlinking = true;
 
-        SetPlayerCollidersEnabled(false);
+        SetPlayerColliders(false);
 
         while(GetIsInvencible()){
             SetPlayerModelVisible(false);
@@ -75,7 +74,7 @@ public class PlayerLife : MonoBehaviour
             yield return new WaitForSeconds(blinkIntervalTime);
         }
 
-        SetPlayerCollidersEnabled(true);
+        SetPlayerColliders(true);
 
         yield return null;
     }
@@ -100,11 +99,12 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-    void SetPlayerCollidersEnabled(bool value){
-        foreach(Collider playerCollider in playerColliders){
-            if(playerCollider.isTrigger){
-                playerCollider.enabled = value;
-            }
-        }
+    public void SetPlayerBodyCollider(bool value){
+        playerBodyCollider.enabled = value;
+    }
+
+    void SetPlayerColliders(bool value){
+        SetPlayerBodyCollider(value);
+        playerAttack.SetPlayerFootCollider(value);
     }
 }
