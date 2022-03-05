@@ -20,7 +20,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private Rigidbody rigidBody; 
+    private Rigidbody playerRigidbody; 
     private PlayerInteraction playerInteraction;
     private PlayerAttack playerAttack;
     private float inRopeY;
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidBody = GetComponent<Rigidbody>();
+        playerRigidbody = GetComponent<Rigidbody>();
         playerInteraction = GetComponent<PlayerInteraction>(); 
         playerAttack = GetComponent<PlayerAttack>();
     }
@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
+        
     }
 
     void FixedUpdate()
@@ -67,26 +67,26 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(Vector2 input){
         if(playerInteraction.GetIsSwimming()){
-            rigidBody.AddForce(new Vector3(input.x, input.y, 0) * swimming.swimForce);
+            playerRigidbody.AddForce(new Vector3(input.x, input.y, 0) * swimming.swimForce);
 
-            if(rigidBody.position.y > -0.66 /*&& input.y == 0*/) input.y = -0.5f;
-            else if(input.y > 0 && rigidBody.position.y > -1) input.y = 0;
+            if(playerRigidbody.position.y > -0.66 /*&& input.y == 0*/) input.y = -0.5f;
+            else if(input.y > 0 && playerRigidbody.position.y > -1) input.y = 0;
 
-            Vector3 maxVelocity = rigidBody.velocity;
+            Vector3 maxVelocity = playerRigidbody.velocity;
             maxVelocity.x = Mathf.Clamp(maxVelocity.x, -swimming.maxSwimSpeed * -input.x, swimming.maxSwimSpeed * input.x);
             maxVelocity.y = Mathf.Clamp(maxVelocity.y, -swimming.maxSwimSpeed * -input.y, swimming.maxSwimSpeed * input.y);
            
-            rigidBody.velocity = maxVelocity;
+            playerRigidbody.velocity = maxVelocity;
 
             RotatePlayerModel(input);
 
         } else {
             input.y = 0;
 
-            rigidBody.AddForce(new Vector3(input.x, input.y, 0) * walking.moveForce);
+            playerRigidbody.AddForce(new Vector3(input.x, input.y, 0) * walking.moveForce);
 
             if(playerAttack.GetIsAttacking() == false){
-                Vector3 maxVelocity = rigidBody.velocity;
+                Vector3 maxVelocity = playerRigidbody.velocity;
 
                 if(playerInteraction.GetIsInGround()){
                     maxVelocity.x = Mathf.Clamp(maxVelocity.x, -walking.maxSpeed * -input.x, walking.maxSpeed * input.x);
@@ -94,7 +94,7 @@ public class PlayerMovement : MonoBehaviour
                     maxVelocity.x = Mathf.Clamp(maxVelocity.x, -walking.maxSpeed, walking.maxSpeed);
                 }
                 
-                rigidBody.velocity = maxVelocity;
+                playerRigidbody.velocity = maxVelocity;
             }
 
             RotatePlayerModel(input);
@@ -141,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
     
     public void Jump(){
         if(playerInteraction.GetIsSwimming()){
-            if(rigidBody.position.y >= -1){
+            if(playerRigidbody.position.y >= -1){
                 playerInteraction.SetIsSwimming(false);
                 JumpUp(swimming.jumpForce);
             }
@@ -153,18 +153,18 @@ public class PlayerMovement : MonoBehaviour
                 (playerInteraction.GetLastWallTouched() != playerInteraction.GetLastlastWallJumped())
             )
         ){
-            if(playerInteraction.GetIsSwimming()) rigidBody.velocity = Vector3.zero;
+            if(playerRigidbody.velocity.y < 0) playerRigidbody.velocity = new Vector3(playerRigidbody.velocity.x, 0, 0);
 
             /*if(isSliding && playerInteraction.GetIsCollidingRight()){
                 //transform.Translate(0, 0, 0);
 
-                rigidBody.AddForce(-walking.horizontalJumpForce, walking.jumpForce, 0);
+                playerRigidbody.AddForce(-walking.horizontalJumpForce, walking.jumpForce, 0);
                 RotatePlayerModel(new Vector2(-1,0));
                 
             } else if(isSliding && playerInteraction.GetIsCollidingLeft()){
                 //transform.Translate(0, 0, 0);
 
-                rigidBody.AddForce(walking.horizontalJumpForce, walking.jumpForce, 0);
+                playerRigidbody.AddForce(walking.horizontalJumpForce, walking.jumpForce, 0);
                 RotatePlayerModel(new Vector2(1,0));
             }*/
                 
@@ -201,12 +201,12 @@ public class PlayerMovement : MonoBehaviour
     public void JumpUp(float jumpForce){
         playerInteraction.SetLastWallJumped();
 
-        rigidBody.AddForce(0, jumpForce, 0/*, ForceMode.Acceleration*/);
+        playerRigidbody.AddForce(0, jumpForce, 0/*, ForceMode.Acceleration*/);
 
-        Vector3 jumpVelocity = rigidBody.velocity;
+        Vector3 jumpVelocity = playerRigidbody.velocity;
         jumpVelocity.y = Mathf.Clamp(jumpVelocity.y, -walking.maxJumpSpeed, walking.maxJumpSpeed);
         jumpVelocity.x = Mathf.Clamp(jumpVelocity.x, -walking.maxJumpSpeed, walking.maxJumpSpeed);
-        rigidBody.velocity = jumpVelocity;
+        playerRigidbody.velocity = jumpVelocity;
     }
 
     public void RotatePlayerModel(Vector2 input){
@@ -228,5 +228,21 @@ public class PlayerMovement : MonoBehaviour
 
     public Swimming GetSwimmingMovement(){
         return swimming;
+    }
+
+    public bool GetIsWalking(){
+        return playerRigidbody.velocity.x != 0 && playerInteraction.GetIsInGround();
+    }
+
+    public bool GetIsRising(){
+        return playerRigidbody.velocity.y > 0 && playerInteraction.GetIsInGround() == false;
+    }
+
+    public bool GetIsFalling(){
+        return playerRigidbody.velocity.y < 0 && playerInteraction.GetIsInGround() == false;
+    }
+
+    public bool GetIsJumping(){
+        return GetIsRising() || GetIsFalling();
     }
 }

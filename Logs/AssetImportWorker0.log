@@ -1,0 +1,855 @@
+Unity Editor version:    2020.3.30f1 (1fb1bf06830e)
+Branch:                  2020.3/staging
+Build type:              Release
+Batch mode:              YES
+System name:             Linux
+Distro version:          #1 SMP PREEMPT Wed, 02 Mar 2022 12:22:51 +0000
+Kernel version:          5.16.12-arch1-1
+Architecture:            x86_64
+Available memory:        15971 MB
+Using pre-set license
+Pro License: NO
+Desktop is 1920 x 1080 @ 60 Hz
+
+COMMAND LINE ARGUMENTS:
+Unity
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+/home/bruno/Workspace/Unity3D/Plataforma
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+39789
+Successfully changed project path to: /home/bruno/Workspace/Unity3D/Plataforma
+/home/bruno/Workspace/Unity3D/Plataforma
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 25,32 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Initialize engine version: 2020.3.30f1 (1fb1bf06830e)
+[Subsystems] Discovering subsystems at path /home/bruno/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path /home/bruno/Workspace/Unity3D/Plataforma/Assets
+GfxDevice: creating device client; threaded=0
+[vulkan] LoadVulkanLibrary libvulkan.so.1[vulkan] Loaded instance function vkGetInstanceProcAddr
+[vulkan] Loaded instance function vkGetInstanceProcAddr
+[vulkan] Loaded instance function vkCreateInstance
+[vulkan] Loaded instance function vkEnumerateInstanceExtensionProperties
+[vulkan] Loaded instance function vkEnumerateInstanceLayerProperties
+[vulkan] Loaded instance function vkEnumerateInstanceVersion
+[Vulkan init] extensions: count=18
+[Vulkan init] extensions: name=VK_KHR_device_group_creation, enabled=0
+[Vulkan init] extensions: name=VK_KHR_display, enabled=1
+[Vulkan init] extensions: name=VK_KHR_external_fence_capabilities, enabled=0
+[Vulkan init] extensions: name=VK_KHR_external_memory_capabilities, enabled=0
+[Vulkan init] extensions: name=VK_KHR_external_semaphore_capabilities, enabled=0
+[Vulkan init] extensions: name=VK_KHR_get_display_properties2, enabled=0
+[Vulkan init] extensions: name=VK_KHR_get_physical_device_properties2, enabled=1
+[Vulkan init] extensions: name=VK_KHR_get_surface_capabilities2, enabled=0
+[Vulkan init] extensions: name=VK_KHR_surface, enabled=1
+[Vulkan init] extensions: name=VK_KHR_surface_protected_capabilities, enabled=0
+[Vulkan init] extensions: name=VK_KHR_wayland_surface, enabled=0
+[Vulkan init] extensions: name=VK_KHR_xcb_surface, enabled=0
+[Vulkan init] extensions: name=VK_KHR_xlib_surface, enabled=1
+[Vulkan init] extensions: name=VK_EXT_acquire_xlib_display, enabled=0
+[Vulkan init] extensions: name=VK_EXT_debug_report, enabled=1
+[Vulkan init] extensions: name=VK_EXT_direct_mode_display, enabled=0
+[Vulkan init] extensions: name=VK_EXT_display_surface_counter, enabled=0
+[Vulkan init] extensions: name=VK_EXT_debug_utils, enabled=0
+[vulkan] Loaded instance function vkDestroyInstance
+[vulkan] Loaded instance function vkGetPhysicalDeviceProperties
+[vulkan] Loaded instance function vkEnumeratePhysicalDevices
+Vulkan detection: 2
+[Vulkan init] extensions: count=18
+[Vulkan init] extensions: name=VK_KHR_device_group_creation, enabled=0
+[Vulkan init] extensions: name=VK_KHR_display, enabled=1
+[Vulkan init] extensions: name=VK_KHR_external_fence_capabilities, enabled=0
+[Vulkan init] extensions: name=VK_KHR_external_memory_capabilities, enabled=0
+[Vulkan init] extensions: name=VK_KHR_external_semaphore_capabilities, enabled=0
+[Vulkan init] extensions: name=VK_KHR_get_display_properties2, enabled=0
+[Vulkan init] extensions: name=VK_KHR_get_physical_device_properties2, enabled=1
+[Vulkan init] extensions: name=VK_KHR_get_surface_capabilities2, enabled=0
+[Vulkan init] extensions: name=VK_KHR_surface, enabled=1
+[Vulkan init] extensions: name=VK_KHR_surface_protected_capabilities, enabled=0
+[Vulkan init] extensions: name=VK_KHR_wayland_surface, enabled=0
+[Vulkan init] extensions: name=VK_KHR_xcb_surface, enabled=0
+[Vulkan init] extensions: name=VK_KHR_xlib_surface, enabled=1
+[Vulkan init] extensions: name=VK_EXT_acquire_xlib_display, enabled=0
+[Vulkan init] extensions: name=VK_EXT_debug_report, enabled=1
+[Vulkan init] extensions: name=VK_EXT_direct_mode_display, enabled=0
+[Vulkan init] extensions: name=VK_EXT_display_surface_counter, enabled=0
+[Vulkan init] extensions: name=VK_EXT_debug_utils, enabled=0
+[vulkan] Loaded instance function vkDestroyInstance
+[vulkan] Loaded instance function vkGetPhysicalDeviceProperties
+[vulkan] Loaded instance function vkEnumeratePhysicalDevices
+[vulkan] Loaded instance function vkGetDeviceProcAddr
+[vulkan] Loaded instance function vkGetPhysicalDeviceFeatures
+[vulkan] Loaded instance function vkGetPhysicalDeviceFormatProperties
+[vulkan] Loaded instance function vkGetPhysicalDeviceImageFormatProperties
+[vulkan] Loaded instance function vkGetPhysicalDeviceQueueFamilyProperties
+[vulkan] Loaded instance function vkGetPhysicalDeviceMemoryProperties
+[vulkan] Loaded instance function vkCreateDevice
+[vulkan] Loaded instance function vkEnumerateDeviceExtensionProperties
+[vulkan] Loaded instance function vkEnumerateDeviceLayerProperties
+[vulkan] Loaded instance function vkGetPhysicalDeviceSparseImageFormatProperties
+[vulkan] Loaded instance function vkDestroySurfaceKHR
+[vulkan] Loaded instance function vkGetPhysicalDeviceSurfaceSupportKHR
+[vulkan] Loaded instance function vkGetPhysicalDeviceSurfaceCapabilitiesKHR
+[vulkan] Loaded instance function vkGetPhysicalDeviceSurfaceFormatsKHR
+[vulkan] Loaded instance function vkGetPhysicalDeviceSurfacePresentModesKHR
+[vulkan] Loaded instance function vkCreateSwapchainKHR
+[vulkan] Loaded instance function vkDestroySwapchainKHR
+[vulkan] Loaded instance function vkGetSwapchainImagesKHR
+[vulkan] Loaded instance function vkAcquireNextImageKHR
+[vulkan] Loaded instance function vkQueuePresentKHR
+[vulkan] Loaded instance function vkGetPhysicalDeviceDisplayPropertiesKHR
+[vulkan] Loaded instance function vkGetPhysicalDeviceDisplayPlanePropertiesKHR
+[vulkan] Loaded instance function vkGetDisplayPlaneSupportedDisplaysKHR
+[vulkan] Loaded instance function vkGetDisplayModePropertiesKHR
+[vulkan] Loaded instance function vkCreateDisplayModeKHR
+[vulkan] Loaded instance function vkGetDisplayPlaneCapabilitiesKHR
+[vulkan] Loaded instance function vkCreateDisplayPlaneSurfaceKHR
+[vulkan] Loaded instance function vkCreateSharedSwapchainsKHR
+[vulkan] Loaded instance function vkCreateXlibSurfaceKHR
+[vulkan] Loaded instance function vkGetPhysicalDeviceXlibPresentationSupportKHR
+[vulkan] Loaded instance function vkSetHdrMetadataEXT
+[vulkan] Loaded instance function vkGetPhysicalDeviceFeatures2KHR
+[vulkan] Loaded instance function vkGetPhysicalDeviceProperties2KHR
+[vulkan] Loaded instance function vkGetPhysicalDeviceFormatProperties2KHR
+[vulkan] Loaded instance function vkGetPhysicalDeviceImageFormatProperties2KHR
+[vulkan] Loaded instance function vkGetPhysicalDeviceQueueFamilyProperties2KHR
+[vulkan] Loaded instance function vkGetPhysicalDeviceMemoryProperties2KHR
+[vulkan] Loaded instance function vkGetPhysicalDeviceSparseImageFormatProperties2KHR
+[Vulkan init] SelectPhysicalDevice requestedDeviceIndex=-1 xrDevice=(nil)
+[Vulkan init] Physical Device 0x55d7c1632620 [0]: "AMD RADV NAVI10 (ACO)" deviceType=2 vendorID=1002 deviceID=731f
+[Vulkan init] Selected physical device 0x55d7c1632620
+[Vulkan init] Graphics queue count=1
+[Vulkan init] extensions: count=117
+[Vulkan init] extensions: name=VK_KHR_8bit_storage, enabled=0
+[Vulkan init] extensions: name=VK_KHR_16bit_storage, enabled=0
+[Vulkan init] extensions: name=VK_KHR_bind_memory2, enabled=0
+[Vulkan init] extensions: name=VK_KHR_buffer_device_address, enabled=0
+[Vulkan init] extensions: name=VK_KHR_copy_commands2, enabled=0
+[Vulkan init] extensions: name=VK_KHR_create_renderpass2, enabled=1
+[Vulkan init] extensions: name=VK_KHR_dedicated_allocation, enabled=1
+[Vulkan init] extensions: name=VK_KHR_deferred_host_operations, enabled=0
+[Vulkan init] extensions: name=VK_KHR_depth_stencil_resolve, enabled=1
+[Vulkan init] extensions: name=VK_KHR_descriptor_update_template, enabled=1
+[Vulkan init] extensions: name=VK_KHR_device_group, enabled=0
+[Vulkan init] extensions: name=VK_KHR_draw_indirect_count, enabled=0
+[Vulkan init] extensions: name=VK_KHR_driver_properties, enabled=0
+[Vulkan init] extensions: name=VK_KHR_external_fence, enabled=0
+[Vulkan init] extensions: name=VK_KHR_external_fence_fd, enabled=0
+[Vulkan init] extensions: name=VK_KHR_external_memory, enabled=0
+[Vulkan init] extensions: name=VK_KHR_external_memory_fd, enabled=0
+[Vulkan init] extensions: name=VK_KHR_external_semaphore, enabled=0
+[Vulkan init] extensions: name=VK_KHR_external_semaphore_fd, enabled=0
+[Vulkan init] extensions: name=VK_KHR_get_memory_requirements2, enabled=1
+[Vulkan init] extensions: name=VK_KHR_image_format_list, enabled=1
+[Vulkan init] extensions: name=VK_KHR_imageless_framebuffer, enabled=0
+[Vulkan init] extensions: name=VK_KHR_incremental_present, enabled=0
+[Vulkan init] extensions: name=VK_KHR_maintenance1, enabled=1
+[Vulkan init] extensions: name=VK_KHR_maintenance2, enabled=1
+[Vulkan init] extensions: name=VK_KHR_maintenance3, enabled=0
+[Vulkan init] extensions: name=VK_KHR_multiview, enabled=1
+[Vulkan init] extensions: name=VK_KHR_pipeline_executable_properties, enabled=0
+[Vulkan init] extensions: name=VK_KHR_push_descriptor, enabled=0
+[Vulkan init] extensions: name=VK_KHR_relaxed_block_layout, enabled=0
+[Vulkan init] extensions: name=VK_KHR_sampler_mirror_clamp_to_edge, enabled=1
+[Vulkan init] extensions: name=VK_KHR_sampler_ycbcr_conversion, enabled=0
+[Vulkan init] extensions: name=VK_KHR_separate_depth_stencil_layouts, enabled=0
+[Vulkan init] extensions: name=VK_KHR_shader_atomic_int64, enabled=0
+[Vulkan init] extensions: name=VK_KHR_shader_clock, enabled=0
+[Vulkan init] extensions: name=VK_KHR_shader_draw_parameters, enabled=0
+[Vulkan init] extensions: name=VK_KHR_shader_float16_int8, enabled=0
+[Vulkan init] extensions: name=VK_KHR_shader_float_controls, enabled=0
+[Vulkan init] extensions: name=VK_KHR_shader_non_semantic_info, enabled=0
+[Vulkan init] extensions: name=VK_KHR_shader_subgroup_extended_types, enabled=0
+[Vulkan init] extensions: name=VK_KHR_shader_terminate_invocation, enabled=0
+[Vulkan init] extensions: name=VK_KHR_spirv_1_4, enabled=0
+[Vulkan init] extensions: name=VK_KHR_storage_buffer_storage_class, enabled=0
+[Vulkan init] extensions: name=VK_KHR_swapchain, enabled=1
+[Vulkan init] extensions: name=VK_KHR_swapchain_mutable_format, enabled=0
+[Vulkan init] extensions: name=VK_KHR_timeline_semaphore, enabled=0
+[Vulkan init] extensions: name=VK_KHR_uniform_buffer_standard_layout, enabled=0
+[Vulkan init] extensions: name=VK_KHR_variable_pointers, enabled=0
+[Vulkan init] extensions: name=VK_KHR_vulkan_memory_model, enabled=0
+[Vulkan init] extensions: name=VK_KHR_workgroup_memory_explicit_layout, enabled=0
+[Vulkan init] extensions: name=VK_KHR_zero_initialize_workgroup_memory, enabled=0
+[Vulkan init] extensions: name=VK_EXT_4444_formats, enabled=0
+[Vulkan init] extensions: name=VK_EXT_buffer_device_address, enabled=0
+[Vulkan init] extensions: name=VK_EXT_calibrated_timestamps, enabled=0
+[Vulkan init] extensions: name=VK_EXT_conditional_rendering, enabled=0
+[Vulkan init] extensions: name=VK_EXT_conservative_rasterization, enabled=1
+[Vulkan init] extensions: name=VK_EXT_custom_border_color, enabled=0
+[Vulkan init] extensions: name=VK_EXT_depth_clip_enable, enabled=0
+[Vulkan init] extensions: name=VK_EXT_depth_range_unrestricted, enabled=0
+[Vulkan init] extensions: name=VK_EXT_descriptor_indexing, enabled=0
+[Vulkan init] extensions: name=VK_EXT_discard_rectangles, enabled=0
+[Vulkan init] extensions: name=VK_EXT_display_control, enabled=0
+[Vulkan init] extensions: name=VK_EXT_extended_dynamic_state, enabled=0
+[Vulkan init] extensions: name=VK_EXT_external_memory_dma_buf, enabled=0
+[Vulkan init] extensions: name=VK_EXT_external_memory_host, enabled=0
+[Vulkan init] extensions: name=VK_EXT_global_priority, enabled=0
+[Vulkan init] extensions: name=VK_EXT_host_query_reset, enabled=0
+[Vulkan init] extensions: name=VK_EXT_image_drm_format_modifier, enabled=0
+[Vulkan init] extensions: name=VK_EXT_image_robustness, enabled=0
+[Vulkan init] extensions: name=VK_EXT_index_type_uint8, enabled=0
+[Vulkan init] extensions: name=VK_EXT_inline_uniform_block, enabled=0
+[Vulkan init] extensions: name=VK_EXT_line_rasterization, enabled=0
+[Vulkan init] extensions: name=VK_EXT_memory_budget, enabled=0
+[Vulkan init] extensions: name=VK_EXT_memory_priority, enabled=0
+[Vulkan init] extensions: name=VK_EXT_pci_bus_info, enabled=0
+[Vulkan init] extensions: name=VK_EXT_pipeline_creation_cache_control, enabled=0
+[Vulkan init] extensions: name=VK_EXT_pipeline_creation_feedback, enabled=0
+[Vulkan init] extensions: name=VK_EXT_post_depth_coverage, enabled=0
+[Vulkan init] extensions: name=VK_EXT_private_data, enabled=0
+[Vulkan init] extensions: name=VK_EXT_queue_family_foreign, enabled=0
+[Vulkan init] extensions: name=VK_EXT_robustness2, enabled=0
+[Vulkan init] extensions: name=VK_EXT_sampler_filter_minmax, enabled=0
+[Vulkan init] extensions: name=VK_EXT_scalar_block_layout, enabled=0
+[Vulkan init] extensions: name=VK_EXT_shader_atomic_float, enabled=0
+[Vulkan init] extensions: name=VK_EXT_shader_demote_to_helper_invocation, enabled=0
+[Vulkan init] extensions: name=VK_EXT_shader_image_atomic_int64, enabled=0
+[Vulkan init] extensions: name=VK_EXT_shader_stencil_export, enabled=0
+[Vulkan init] extensions: name=VK_EXT_shader_subgroup_ballot, enabled=0
+[Vulkan init] extensions: name=VK_EXT_shader_subgroup_vote, enabled=0
+[Vulkan init] extensions: name=VK_EXT_shader_viewport_index_layer, enabled=1
+[Vulkan init] extensions: name=VK_EXT_subgroup_size_control, enabled=0
+[Vulkan init] extensions: name=VK_EXT_texel_buffer_alignment, enabled=0
+[Vulkan init] extensions: name=VK_EXT_transform_feedback, enabled=0
+[Vulkan init] extensions: name=VK_EXT_vertex_attribute_divisor, enabled=0
+[Vulkan init] extensions: name=VK_EXT_ycbcr_image_arrays, enabled=0
+[Vulkan init] extensions: name=VK_AMD_buffer_marker, enabled=0
+[Vulkan init] extensions: name=VK_AMD_device_coherent_memory, enabled=0
+[Vulkan init] extensions: name=VK_AMD_draw_indirect_count, enabled=0
+[Vulkan init] extensions: name=VK_AMD_gcn_shader, enabled=0
+[Vulkan init] extensions: name=VK_AMD_gpu_shader_half_float, enabled=0
+[Vulkan init] extensions: name=VK_AMD_gpu_shader_int16, enabled=0
+[Vulkan init] extensions: name=VK_AMD_memory_overallocation_behavior, enabled=0
+[Vulkan init] extensions: name=VK_AMD_mixed_attachment_samples, enabled=0
+[Vulkan init] extensions: name=VK_AMD_shader_ballot, enabled=0
+[Vulkan init] extensions: name=VK_AMD_shader_core_properties, enabled=0
+[Vulkan init] extensions: name=VK_AMD_shader_core_properties2, enabled=0
+[Vulkan init] extensions: name=VK_AMD_shader_explicit_vertex_parameter, enabled=0
+[Vulkan init] extensions: name=VK_AMD_shader_fragment_mask, enabled=0
+[Vulkan init] extensions: name=VK_AMD_shader_image_load_store_lod, enabled=0
+[Vulkan init] extensions: name=VK_AMD_shader_info, enabled=0
+[Vulkan init] extensions: name=VK_AMD_shader_trinary_minmax, enabled=0
+[Vulkan init] extensions: name=VK_AMD_texture_gather_bias_lod, enabled=0
+[Vulkan init] extensions: name=VK_GOOGLE_decorate_string, enabled=0
+[Vulkan init] extensions: name=VK_GOOGLE_hlsl_functionality1, enabled=0
+[Vulkan init] extensions: name=VK_GOOGLE_user_type, enabled=0
+[Vulkan init] extensions: name=VK_NV_compute_shader_derivatives, enabled=0
+[Vulkan init] extensions: name=VK_VALVE_mutable_descriptor_type, enabled=0
+[vulkan] Loaded device function vkDestroyDevice
+[vulkan] Loaded device function vkGetDeviceQueue
+[vulkan] Loaded device function vkQueueSubmit
+[vulkan] Loaded device function vkQueueWaitIdle
+[vulkan] Loaded device function vkDeviceWaitIdle
+[vulkan] Loaded device function vkAllocateMemory
+[vulkan] Loaded device function vkFreeMemory
+[vulkan] Loaded device function vkMapMemory
+[vulkan] Loaded device function vkUnmapMemory
+[vulkan] Loaded device function vkFlushMappedMemoryRanges
+[vulkan] Loaded device function vkInvalidateMappedMemoryRanges
+[vulkan] Loaded device function vkGetDeviceMemoryCommitment
+[vulkan] Loaded device function vkBindBufferMemory
+[vulkan] Loaded device function vkBindImageMemory
+[vulkan] Loaded device function vkGetBufferMemoryRequirements
+[vulkan] Loaded device function vkGetImageMemoryRequirements
+[vulkan] Loaded device function vkGetImageSparseMemoryRequirements
+[vulkan] Loaded device function vkQueueBindSparse
+[vulkan] Loaded device function vkCreateFence
+[vulkan] Loaded device function vkDestroyFence
+[vulkan] Loaded device function vkResetFences
+[vulkan] Loaded device function vkGetFenceStatus
+[vulkan] Loaded device function vkWaitForFences
+[vulkan] Loaded device function vkCreateSemaphore
+[vulkan] Loaded device function vkDestroySemaphore
+[vulkan] Loaded device function vkCreateEvent
+[vulkan] Loaded device function vkDestroyEvent
+[vulkan] Loaded device function vkGetEventStatus
+[vulkan] Loaded device function vkSetEvent
+[vulkan] Loaded device function vkResetEvent
+[vulkan] Loaded device function vkCreateQueryPool
+[vulkan] Loaded device function vkDestroyQueryPool
+[vulkan] Loaded device function vkGetQueryPoolResults
+[vulkan] Loaded device function vkCreateBuffer
+[vulkan] Loaded device function vkDestroyBuffer
+[vulkan] Loaded device function vkCreateBufferView
+[vulkan] Loaded device function vkDestroyBufferView
+[vulkan] Loaded device function vkCreateImage
+[vulkan] Loaded device function vkDestroyImage
+[vulkan] Loaded device function vkGetImageSubresourceLayout
+[vulkan] Loaded device function vkCreateImageView
+[vulkan] Loaded device function vkDestroyImageView
+[vulkan] Loaded device function vkCreateShaderModule
+[vulkan] Loaded device function vkDestroyShaderModule
+[vulkan] Loaded device function vkCreatePipelineCache
+[vulkan] Loaded device function vkDestroyPipelineCache
+[vulkan] Loaded device function vkGetPipelineCacheData
+[vulkan] Loaded device function vkMergePipelineCaches
+[vulkan] Loaded device function vkCreateGraphicsPipelines
+[vulkan] Loaded device function vkCreateComputePipelines
+[vulkan] Loaded device function vkDestroyPipeline
+[vulkan] Loaded device function vkCreatePipelineLayout
+[vulkan] Loaded device function vkDestroyPipelineLayout
+[vulkan] Loaded device function vkCreateSampler
+[vulkan] Loaded device function vkDestroySampler
+[vulkan] Loaded device function vkCreateDescriptorSetLayout
+[vulkan] Loaded device function vkDestroyDescriptorSetLayout
+[vulkan] Loaded device function vkCreateDescriptorPool
+[vulkan] Loaded device function vkDestroyDescriptorPool
+[vulkan] Loaded device function vkResetDescriptorPool
+[vulkan] Loaded device function vkAllocateDescriptorSets
+[vulkan] Loaded device function vkFreeDescriptorSets
+[vulkan] Loaded device function vkUpdateDescriptorSets
+[vulkan] Loaded device function vkCreateFramebuffer
+[vulkan] Loaded device function vkDestroyFramebuffer
+[vulkan] Loaded device function vkCreateRenderPass
+[vulkan] Loaded device function vkDestroyRenderPass
+[vulkan] Loaded device function vkGetRenderAreaGranularity
+[vulkan] Loaded device function vkCreateCommandPool
+[vulkan] Loaded device function vkDestroyCommandPool
+[vulkan] Loaded device function vkResetCommandPool
+[vulkan] Loaded device function vkAllocateCommandBuffers
+[vulkan] Loaded device function vkFreeCommandBuffers
+[vulkan] Loaded device function vkBeginCommandBuffer
+[vulkan] Loaded device function vkEndCommandBuffer
+[vulkan] Loaded device function vkResetCommandBuffer
+[vulkan] Loaded device function vkCmdBindPipeline
+[vulkan] Loaded device function vkCmdSetViewport
+[vulkan] Loaded device function vkCmdSetScissor
+[vulkan] Loaded device function vkCmdSetLineWidth
+[vulkan] Loaded device function vkCmdSetDepthBias
+[vulkan] Loaded device function vkCmdSetBlendConstants
+[vulkan] Loaded device function vkCmdSetDepthBounds
+[vulkan] Loaded device function vkCmdSetStencilCompareMask
+[vulkan] Loaded device function vkCmdSetStencilWriteMask
+[vulkan] Loaded device function vkCmdSetStencilReference
+[vulkan] Loaded device function vkCmdBindDescriptorSets
+[vulkan] Loaded device function vkCmdBindIndexBuffer
+[vulkan] Loaded device function vkCmdBindVertexBuffers
+[vulkan] Loaded device function vkCmdDraw
+[vulkan] Loaded device function vkCmdDrawIndexed
+[vulkan] Loaded device function vkCmdDrawIndirect
+[vulkan] Loaded device function vkCmdDrawIndexedIndirect
+[vulkan] Loaded device function vkCmdDispatch
+[vulkan] Loaded device function vkCmdDispatchIndirect
+[vulkan] Loaded device function vkCmdCopyBuffer
+[vulkan] Loaded device function vkCmdCopyImage
+[vulkan] Loaded device function vkCmdBlitImage
+[vulkan] Loaded device function vkCmdCopyBufferToImage
+[vulkan] Loaded device function vkCmdCopyImageToBuffer
+[vulkan] Loaded device function vkCmdUpdateBuffer
+[vulkan] Loaded device function vkCmdFillBuffer
+[vulkan] Loaded device function vkCmdClearColorImage
+[vulkan] Loaded device function vkCmdClearDepthStencilImage
+[vulkan] Loaded device function vkCmdClearAttachments
+[vulkan] Loaded device function vkCmdResolveImage
+[vulkan] Loaded device function vkCmdSetEvent
+[vulkan] Loaded device function vkCmdResetEvent
+[vulkan] Loaded device function vkCmdWaitEvents
+[vulkan] Loaded device function vkCmdPipelineBarrier
+[vulkan] Loaded device function vkCmdBeginQuery
+[vulkan] Loaded device function vkCmdEndQuery
+[vulkan] Loaded device function vkCmdResetQueryPool
+[vulkan] Loaded device function vkCmdWriteTimestamp
+[vulkan] Loaded device function vkCmdCopyQueryPoolResults
+[vulkan] Loaded device function vkCmdPushConstants
+[vulkan] Loaded device function vkCmdBeginRenderPass
+[vulkan] Loaded device function vkCmdNextSubpass
+[vulkan] Loaded device function vkCmdEndRenderPass
+[vulkan] Loaded device function vkCmdExecuteCommands
+[vulkan] Loaded device function vkGetImageMemoryRequirements2KHR
+[vulkan] Loaded device function vkGetBufferMemoryRequirements2KHR
+[vulkan] Loaded device function vkGetImageSparseMemoryRequirements2KHR
+[vulkan] Loaded device function vkCreateDescriptorUpdateTemplateKHR
+[vulkan] Loaded device function vkDestroyDescriptorUpdateTemplateKHR
+[vulkan] Loaded device function vkUpdateDescriptorSetWithTemplateKHR
+[vulkan] Loaded device function vkCmdBeginRenderPass2KHR
+[vulkan] Loaded device function vkCmdEndRenderPass2KHR
+[vulkan] Loaded device function vkCmdNextSubpass2KHR
+[vulkan] Loaded device function vkCreateRenderPass2KHR
+[vulkan] Failed to load device function vkDebugMarkerSetObjectTagEXT
+[vulkan] Loaded instance function vkDebugMarkerSetObjectTagEXT
+[vulkan] Failed to load device function vkDebugMarkerSetObjectNameEXT
+[vulkan] Loaded instance function vkDebugMarkerSetObjectNameEXT
+[vulkan] Failed to load device function vkCmdDebugMarkerBeginEXT
+[vulkan] Loaded instance function vkCmdDebugMarkerBeginEXT
+[vulkan] Failed to load device function vkCmdDebugMarkerEndEXT
+[vulkan] Loaded instance function vkCmdDebugMarkerEndEXT
+[vulkan] Failed to load device function vkCmdDebugMarkerInsertEXT
+[vulkan] Loaded instance function vkCmdDebugMarkerInsertEXT
+Vulkan API version 1.1.0 (1.2.168 supported by driver, 1.1.0 requested)
+Vulkan vendor=[ATI] id=[1002]
+Vulkan renderer=[AMD RADV NAVI10 (ACO)] id=[731f]
+Vulkan device type 2
+Vulkan driverversion=[0x05401008] uint=[88084488]
+Vulkan PSO: cache data not found [path=/home/bruno/.var/app/com.unity.UnityHub/cache/tmp/DefaultCompany/Plataforma/vulkan_pso_cache.bin]
+Initialize mono
+Mono path[0] = '/home/bruno/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed'
+Mono path[1] = '/home/bruno/Unity/Hub/Editor/2020.3.30f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = '/home/bruno/Unity/Hub/Editor/2020.3.30f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56485
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: /home/bruno/Unity/Hub/Editor/2020.3.30f1/Editor/Data/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll
+Register platform support module: /home/bruno/Unity/Hub/Editor/2020.3.30f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Register platform support module: /home/bruno/Unity/Hub/Editor/2020.3.30f1/Editor/Data/PlaybackEngines/LinuxStandaloneSupport/UnityEditor.LinuxStandalone.Extensions.dll
+Registered in 0,001219 seconds.
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 27,76 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,504 seconds
+Domain Reload Profiling:
+	ReloadAssembly (505ms)
+		BeginReloadAssembly (42ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (403ms)
+			LoadAssemblies (41ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (138ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (33ms)
+			SetupLoadedEditorAssemblies (157ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (5ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (28ms)
+				BeforeProcessingInitializeOnLoad (7ms)
+				ProcessInitializeOnLoadAttributes (88ms)
+				ProcessInitializeOnLoadMethodAttributes (29ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0,001642 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0,32 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,869 seconds
+Domain Reload Profiling:
+	ReloadAssembly (869ms)
+		BeginReloadAssembly (119ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (16ms)
+		EndReloadAssembly (699ms)
+			LoadAssemblies (67ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (254ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (46ms)
+			SetupLoadedEditorAssemblies (251ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (13ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (53ms)
+				ProcessInitializeOnLoadAttributes (174ms)
+				ProcessInitializeOnLoadMethodAttributes (7ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler after 0.01 seconds
+Refreshing native plugins compatible for Editor in 0,30 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 1526 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 148,6 MB.
+System memory in use after: 148,7 MB.
+
+Unloading 16 unused Assets to reduce memory usage. Loaded Objects now: 1964.
+Total: 3,787551 ms (FindLiveObjects: 0,096880 ms CreateObjectMapping: 0,040030 ms MarkObjects: 3,551210 ms  DeleteObjects: 0,098771 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Prefabs/EnemyPatrol.prefab
+  artifactKey: Guid(6df56d1d2655a54559881a8ba9733327) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/EnemyPatrol.prefab using Guid(6df56d1d2655a54559881a8ba9733327) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '11fa326993dba7c9c2ed51e66c974a5a') in 0,059397 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 6,785064 seconds.
+  path: Assets/Prefabs/EnemyPatrol.prefab
+  artifactKey: Guid(6df56d1d2655a54559881a8ba9733327) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/EnemyPatrol.prefab using Guid(6df56d1d2655a54559881a8ba9733327) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3faeb109e0516d1151d40fe3f9f656ae') in 0,004923 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 3,666380 seconds.
+  path: Assets/Prefabs/EnemyPatrol.prefab
+  artifactKey: Guid(6df56d1d2655a54559881a8ba9733327) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Prefabs/EnemyPatrol.prefab using Guid(6df56d1d2655a54559881a8ba9733327) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '158862e64fc344124815f60da0fc7f80') in 0,004863 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001610 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0,30 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,813 seconds
+Domain Reload Profiling:
+	ReloadAssembly (814ms)
+		BeginReloadAssembly (88ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (27ms)
+		EndReloadAssembly (670ms)
+			LoadAssemblies (71ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (252ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (38ms)
+			SetupLoadedEditorAssemblies (231ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (12ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (49ms)
+				ProcessInitializeOnLoadAttributes (159ms)
+				ProcessInitializeOnLoadMethodAttributes (7ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (7ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0,28 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 1520 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 150,2 MB.
+System memory in use after: 150,3 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1975.
+Total: 3,518971 ms (FindLiveObjects: 0,127430 ms CreateObjectMapping: 0,030870 ms MarkObjects: 3,320911 ms  DeleteObjects: 0,038690 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001173 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0,30 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,775 seconds
+Domain Reload Profiling:
+	ReloadAssembly (776ms)
+		BeginReloadAssembly (82ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (25ms)
+		EndReloadAssembly (643ms)
+			LoadAssemblies (64ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (238ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (38ms)
+			SetupLoadedEditorAssemblies (223ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (12ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (47ms)
+				ProcessInitializeOnLoadAttributes (154ms)
+				ProcessInitializeOnLoadMethodAttributes (7ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (5ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0,29 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 1520 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 150,4 MB.
+System memory in use after: 150,5 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1977.
+Total: 3,514960 ms (FindLiveObjects: 0,127360 ms CreateObjectMapping: 0,034160 ms MarkObjects: 3,325370 ms  DeleteObjects: 0,027450 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001194 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0,30 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,794 seconds
+Domain Reload Profiling:
+	ReloadAssembly (794ms)
+		BeginReloadAssembly (80ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (662ms)
+			LoadAssemblies (66ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (245ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (40ms)
+			SetupLoadedEditorAssemblies (233ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (12ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (52ms)
+				ProcessInitializeOnLoadAttributes (159ms)
+				ProcessInitializeOnLoadMethodAttributes (6ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0,30 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 1520 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 150,7 MB.
+System memory in use after: 150,7 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1979.
+Total: 3,475281 ms (FindLiveObjects: 0,098500 ms CreateObjectMapping: 0,031360 ms MarkObjects: 3,312951 ms  DeleteObjects: 0,031860 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001218 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0,29 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,781 seconds
+Domain Reload Profiling:
+	ReloadAssembly (781ms)
+		BeginReloadAssembly (79ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (22ms)
+		EndReloadAssembly (652ms)
+			LoadAssemblies (66ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (239ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (41ms)
+			SetupLoadedEditorAssemblies (224ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (12ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (47ms)
+				ProcessInitializeOnLoadAttributes (155ms)
+				ProcessInitializeOnLoadMethodAttributes (6ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0,29 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 1520 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 150,9 MB.
+System memory in use after: 150,9 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1981.
+Total: 3,498401 ms (FindLiveObjects: 0,122790 ms CreateObjectMapping: 0,030660 ms MarkObjects: 3,300941 ms  DeleteObjects: 0,043120 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001242 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0,31 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,787 seconds
+Domain Reload Profiling:
+	ReloadAssembly (787ms)
+		BeginReloadAssembly (79ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (21ms)
+		EndReloadAssembly (657ms)
+			LoadAssemblies (66ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (239ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (39ms)
+			SetupLoadedEditorAssemblies (227ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (12ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (48ms)
+				ProcessInitializeOnLoadAttributes (157ms)
+				ProcessInitializeOnLoadMethodAttributes (6ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0,29 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 1520 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 151,1 MB.
+System memory in use after: 151,1 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1983.
+Total: 3,593981 ms (FindLiveObjects: 0,133160 ms CreateObjectMapping: 0,033760 ms MarkObjects: 3,394561 ms  DeleteObjects: 0,031820 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0,001198 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for LinuxStandalone target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Refreshing native plugins compatible for Editor in 0,29 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  0,793 seconds
+Domain Reload Profiling:
+	ReloadAssembly (793ms)
+		BeginReloadAssembly (84ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (4ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (27ms)
+		EndReloadAssembly (657ms)
+			LoadAssemblies (66ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (242ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (39ms)
+			SetupLoadedEditorAssemblies (230ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (12ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (0ms)
+				BeforeProcessingInitializeOnLoad (48ms)
+				ProcessInitializeOnLoadAttributes (159ms)
+				ProcessInitializeOnLoadMethodAttributes (7ms)
+				AfterProcessingInitializeOnLoad (3ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (6ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0,29 ms, found 0 plugins.
+Preloading 0 native plugins for Editor in 0,00 ms.
+Unloading 1520 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 151,3 MB.
+System memory in use after: 151,3 MB.
+
+Unloading 11 unused Assets to reduce memory usage. Loaded Objects now: 1985.
+Total: 3,552731 ms (FindLiveObjects: 0,093930 ms CreateObjectMapping: 0,030900 ms MarkObjects: 3,396041 ms  DeleteObjects: 0,031240 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file

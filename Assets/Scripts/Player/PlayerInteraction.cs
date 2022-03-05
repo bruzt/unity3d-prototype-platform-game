@@ -7,6 +7,7 @@ public class PlayerInteraction : MonoBehaviour
     private Rigidbody rigidBody;
     private PlayerMovement playerMovement;
     private GameObject ropeNodeGameObject;
+    private GameObject lastCoinCollected;
     
     [SerializeField] private GameObject lastWallTouched;
     [SerializeField] private GameObject lastWallJumped;
@@ -73,10 +74,13 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     void EnterCoin(GameObject coin){
-        if(coin.name.Contains("One")) GameController.AddCoin(1);
-        if(coin.name.Contains("Ten")) GameController.AddCoin(10);
-        
-        GameObject.Destroy(coin);
+        if(coin != lastCoinCollected){
+            if(coin.name.Contains("One")) GameController.AddCoin(1);
+            if(coin.name.Contains("Ten")) GameController.AddCoin(10);
+            
+            lastCoinCollected = coin;
+            GameObject.Destroy(coin);
+        }
     }
 
     void EnterGround(){
