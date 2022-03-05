@@ -6,10 +6,10 @@ public class DestructibleBehavior : MonoBehaviour
 {
     private int currentHitPoints;
 
-    public List<string> takesDamageOf;
-    public int totalHitPoints = 1;
-    public float timeToDestroy;
-    public int ForceUpOnHit = 10000;
+    [SerializeField] private List<string> takesDamageOf;
+    [SerializeField] private int totalHitPoints = 1;
+    [SerializeField] private float timeToDestroy;
+    [SerializeField] private int ForceUpOnHit = 10000;
 
     // Start is called before the first frame update
     void Start()

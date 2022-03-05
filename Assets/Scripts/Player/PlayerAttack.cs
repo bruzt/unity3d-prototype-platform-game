@@ -12,10 +12,10 @@ public class PlayerAttack : MonoBehaviour
     private float currentAttackRate;
     private float currentAttackDuration;
 
-    public int damage = 1;
-    public float attackRate = 1;
-    public float attackDuration = 0.1f;
-    public float dashForce = 30000;
+    [SerializeField] private int damage = 1;
+    [SerializeField] private float attackRate = 1;
+    [SerializeField] private float attackDuration = 0.1f;
+    [SerializeField] private float dashForce = 30000;
 
     // Start is called before the first frame update
     void Start()
@@ -73,7 +73,7 @@ public class PlayerAttack : MonoBehaviour
         playerDashCollider.enabled = value;
     }
 
-        public void SetPlayerFootCollider(bool value){
+    public void SetPlayerFootCollider(bool value){
         playerFootCollider.enabled = value;
     }
 

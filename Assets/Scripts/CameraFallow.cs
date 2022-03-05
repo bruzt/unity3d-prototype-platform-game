@@ -6,9 +6,9 @@ public class CameraFallow : MonoBehaviour
 {
     private Vector3 initPosition;
 
-    public Transform target;
-    public Vector3 offset;
-    [Range(1, 20)] public float movementFactor = 1;
+    [SerializeField] private Transform target;
+    [SerializeField] private Vector3 offset;
+    [SerializeField, Range(1, 20)] private float movementFactor = 1;
 
     // Start is called before the first frame update
     void Start()

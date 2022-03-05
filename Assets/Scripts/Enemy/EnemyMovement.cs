@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour
 {
     private Rigidbody enemyRigidbody;
 
-    [SerializeField] int moveSpeed = 1;
+    [SerializeField] private int moveSpeed = 1;
 
     // Start is called before the first frame update
     void Start()

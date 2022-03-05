@@ -20,6 +20,6 @@ public class UIController : MonoBehaviour
     }
 
     void ShowCoins(){
-        coins.text = GameController.coins.ToString();
+        coins.text = GameController.GetCoins().ToString();
     }
 }

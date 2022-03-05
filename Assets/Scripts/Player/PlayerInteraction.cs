@@ -7,6 +7,7 @@ public class PlayerInteraction : MonoBehaviour
     private Rigidbody rigidBody;
     private PlayerMovement playerMovement;
     private GameObject ropeNodeGameObject;
+    
     [SerializeField] private GameObject lastWallTouched;
     [SerializeField] private GameObject lastWallJumped;
     [SerializeField] private bool isCollidingRight = false;

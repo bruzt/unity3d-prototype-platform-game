@@ -39,6 +39,7 @@ public class PlayerLife : MonoBehaviour
             if(isBlinking == false) StartCoroutine(BlinkDamagedInvencibility());   
         } else {
             isBlinking = false;
+            SetPlayerColliders(true);
         }
     }
 
@@ -47,6 +48,8 @@ public class PlayerLife : MonoBehaviour
 
     public void ApplyDamage(){
         if(GetIsInvencible() == false && playerAttack.GetIsAttacking() == false){
+            SetPlayerColliders(false);
+
             currentHitPoints--;
             currentTimeInvencible = 0;
 
@@ -62,8 +65,6 @@ public class PlayerLife : MonoBehaviour
 
         isBlinking = true;
 
-        SetPlayerColliders(false);
-
         while(GetIsInvencible()){
             SetPlayerModelVisible(false);
 
@@ -73,8 +74,6 @@ public class PlayerLife : MonoBehaviour
 
             yield return new WaitForSeconds(blinkIntervalTime);
         }
-
-        SetPlayerColliders(true);
 
         yield return null;
     }

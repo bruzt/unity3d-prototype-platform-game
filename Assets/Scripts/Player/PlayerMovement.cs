@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
     private float inRopeY;
 
     [SerializeField] private bool isLookingRight = true;
-    
     [SerializeField] private int totalJumps = 2;
     [SerializeField] private int jumpsMade = 0;
     [SerializeField] private Walking walking;
