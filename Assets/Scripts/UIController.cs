@@ -10,7 +10,7 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        coins = GetComponentInChildren<Text>();
+        coins = transform.Find("Coins").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -18,6 +18,9 @@ public class UIController : MonoBehaviour
     {
         ShowCoins();
     }
+
+    //////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////
 
     void ShowCoins(){
         coins.text = GameController.GetCoins().ToString();

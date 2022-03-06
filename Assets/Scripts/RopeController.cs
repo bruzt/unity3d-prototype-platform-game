@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RopeController : MonoBehaviour
 {
-    public int size = 1;
-    public float offsetNode = 0.1f;
+    [SerializeField] private int size = 1;
+    [SerializeField] private float offsetNode = 0.1f;
 
     // Start is called before the first frame update
     void Start()

@@ -69,7 +69,7 @@ public class PlayerInteraction : MonoBehaviour
         ){
             playerMovement.SetJumpsMade(1);
             rigidBody.velocity = Vector3.zero;
-            playerMovement.JumpUp(trampoline.jumpForce);
+            playerMovement.JumpUp(trampoline.GetJumpForce());
         }
     }
 
@@ -123,7 +123,7 @@ public class PlayerInteraction : MonoBehaviour
             }   
 
             isSliding = true;
-            rigidBody.velocity = new Vector3(0, -obstacleBehavior.slideDownSpeed, 0);
+            rigidBody.velocity = new Vector3(0, -obstacleBehavior.GetSlideDownSpeed(), 0);
 
         } else {
             isSliding = false;

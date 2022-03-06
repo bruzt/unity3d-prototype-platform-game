@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstacleBehavior : MonoBehaviour
 {
-    public float slideDownSpeed = 1;
+    [SerializeField] private float slideDownSpeed = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -16,5 +16,12 @@ public class ObstacleBehavior : MonoBehaviour
     void Update()
     {
         
+    }
+
+    /////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////
+
+    public float GetSlideDownSpeed(){
+        return slideDownSpeed;
     }
 }

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PropSpawner : MonoBehaviour
 {
-    public GameObject prefab;
-    public int amount;
-    public List<Vector3> positions; 
+    [SerializeField] private GameObject prefab;
+    [SerializeField] private int amount;
+    [SerializeField] private List<Vector3> positions; 
 
     // Start is called before the first frame update
     void Start()
