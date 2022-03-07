@@ -429,11 +429,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2829424067808462225}
   - component: {fileID: 2829424067808462238}
+  - component: {fileID: 5328028321885966254}
+  - component: {fileID: 2829424067808462226}
   - component: {fileID: 2829424067808462224}
   - component: {fileID: 2829424067808462227}
-  - component: {fileID: 2829424067808462226}
   - component: {fileID: 4692936289615420663}
   - component: {fileID: 7816312793529442633}
+  - component: {fileID: 8158447096191847257}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -475,6 +477,45 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 120
   m_CollisionDetection: 0
+--- !u!95 &5328028321885966254
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829424067808462239}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 16d02ea2e05a11e48a7cbda24d37ee87, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2829424067808462226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829424067808462239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c911c995f6265b3cbc036d507683349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastWallTouched: {fileID: 0}
+  lastWallJumped: {fileID: 0}
+  isCollidingRight: 0
+  isCollidingLeft: 0
+  isInRope: 0
+  isInGround: 1
+  isSwimming: 0
+  isSliding: 0
 --- !u!114 &2829424067808462224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,9 +541,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLookingRight: 1
-  isInGround: 1
-  isSliding: 0
-  isSwimming: 0
   totalJumps: 2
   jumpsMade: 0
   walking:
@@ -517,23 +555,6 @@ MonoBehaviour:
     maxJumpSpeed: 10
     swimForce: 100
     maxSwimSpeed: 5
---- !u!114 &2829424067808462226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2829424067808462239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c911c995f6265b3cbc036d507683349, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lastWallTouched: {fileID: 0}
-  lastWallJumped: {fileID: 0}
-  isCollidingRight: 0
-  isCollidingLeft: 0
-  isInRope: 0
 --- !u!114 &4692936289615420663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,7 +567,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b49b0801ad12e5aab26707f8b8c4c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHitPoints: 0
   totalHitPoints: 3
   timeInvencible: 1
   blinkIntervalTime: 0.1
@@ -566,6 +586,18 @@ MonoBehaviour:
   attackRate: 1
   attackDuration: 0.1
   dashForce: 30000
+--- !u!114 &8158447096191847257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2829424067808462239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c93acf5452d1520b7fc18eb34cba75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2829424068089026441
 GameObject:
   m_ObjectHideFlags: 0
