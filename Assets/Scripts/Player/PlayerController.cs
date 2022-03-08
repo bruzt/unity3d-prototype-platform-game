@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
 
                 inputDirection.y = Input.GetAxisRaw("Vertical");
                 
-                if(inputJump) StartCoroutine(playerMovement.JumpInRope());
+                if(inputJump) playerMovement.JumpInRope();
 
                 playerMovement.MoveInRope(inputDirection);
 

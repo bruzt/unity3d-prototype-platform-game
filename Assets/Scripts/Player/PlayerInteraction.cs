@@ -143,8 +143,27 @@ public class PlayerInteraction : MonoBehaviour
         ropeNodeGameObject = ropeNodeCollider.gameObject;
         SetCleanTouchedJumpedWall();
         playerMovement.SetJumpsMade(1);
+    }
 
-        //transform.SetParent(ropeNodeCollider.transform);
+    public void DetachFromRope(){
+        isInRope = false;
+
+        StartCoroutine(DetachFromRopeCoroutine());
+    }
+
+    private IEnumerator DetachFromRopeCoroutine(){
+        
+        yield return new WaitForSeconds(1);
+
+        Collider[] colliders = ropeNodeGameObject.transform.parent.GetComponentsInChildren<Collider>();
+
+        foreach(Collider collider in colliders){
+            collider.enabled = true;
+        }
+
+        ropeNodeGameObject = null;
+
+        yield return null;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////

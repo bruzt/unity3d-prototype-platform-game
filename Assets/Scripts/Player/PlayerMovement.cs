@@ -174,24 +174,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public IEnumerator JumpInRope(){
+    public void JumpInRope(){
 
-        if(playerInteraction.GetRopeNode() != null){
-
-            Collider[] colliders = playerInteraction.GetRopeNode().transform.parent.GetComponentsInChildren<Collider>();
-
-            playerInteraction.SetIsInRope(false);
-
-            JumpUp();
-
-            yield return new WaitForSeconds(1);
-
-            foreach(Collider collider in colliders){
-                collider.enabled = true;
-            }
-
-            yield return null;
-        }
+        playerInteraction.DetachFromRope();
+        
+        JumpUp();
     }
 
     public void JumpUp(){
