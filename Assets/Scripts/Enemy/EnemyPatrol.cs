@@ -31,9 +31,11 @@ public class EnemyPatrol : EnemyBehavior
 
     void OnDrawGizmos()
     {
+        Vector3 gamePosition = (initPosition != Vector3.zero) ? initPosition : transform.position;
+        
         foreach(Vector3 position in patrolPositions){
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position + position, 0.25f);
+            Gizmos.DrawWireSphere(gamePosition + position, 0.25f);
         }
     }
 

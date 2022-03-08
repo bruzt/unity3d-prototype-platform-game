@@ -34,13 +34,6 @@ public class PlayerLife : MonoBehaviour
     void Update()
     {
         currentTimeInvencible += Time.deltaTime;
-
-        if(GetIsInvencible()) {
-            if(isBlinking == false) StartCoroutine(BlinkDamagedInvencibility());   
-        } else {
-            isBlinking = false;
-            SetPlayerColliders(true);
-        }
     }
 
     ////////////////////////////////////////////////////////////////////////////////
@@ -53,6 +46,8 @@ public class PlayerLife : MonoBehaviour
             currentHitPoints--;
             currentTimeInvencible = 0;
 
+            StartCoroutine(DamageBlinkCoroutine());
+
             if(currentHitPoints < 1) {
                 SetIsAlive(false); 
                 playerRigidbody.velocity = Vector3.zero;
@@ -61,7 +56,7 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-    IEnumerator BlinkDamagedInvencibility(){
+    private IEnumerator DamageBlinkCoroutine(){
 
         isBlinking = true;
 
@@ -74,6 +69,9 @@ public class PlayerLife : MonoBehaviour
 
             yield return new WaitForSeconds(blinkIntervalTime);
         }
+
+        isBlinking = false;
+        SetPlayerColliders(true);
 
         yield return null;
     }
