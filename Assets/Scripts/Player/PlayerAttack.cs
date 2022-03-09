@@ -12,7 +12,6 @@ public class PlayerAttack : MonoBehaviour
     private float currentAttackRate;
     private float currentAttackDuration;
 
-    [SerializeField] private int damage = 1;
     [SerializeField] private float attackRate = 1;
     [SerializeField] private float attackDuration = 0.1f;
     [SerializeField] private float dashForce = 30000;
