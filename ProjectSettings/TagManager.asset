@@ -8,6 +8,7 @@ TagManager:
   - CoinOne
   - Enemy
   - Trampoline
+  - Button
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -51,6 +52,7 @@ public class PlayerLife : MonoBehaviour
             if(currentHitPoints < 1) {
                 SetIsAlive(false); 
                 playerRigidbody.velocity = Vector3.zero;
+                StartCoroutine(GoToGameOverScene());
             }
             else playerMovement.JumpUp();
         }
@@ -72,6 +74,15 @@ public class PlayerLife : MonoBehaviour
 
         isBlinking = false;
         SetPlayerColliders(true);
+
+        yield return null;
+    }
+
+    private IEnumerator GoToGameOverScene(){
+
+        yield return new WaitForSeconds(1);
+
+        GameOver.LoadScene();
 
         yield return null;
     }

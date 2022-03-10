@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class GameOver : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -17,14 +17,22 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    ////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////
 
-    public void Play(){
+    public void Retry(){
+        SceneManager.LoadScene(LevelSelector.GetCurrentLevel());
+    }
+
+    public void SelectLevel(){
         LevelSelector.LoadScene();
     }
 
     public void Quit(){
         Application.Quit();
+    }
+
+    public static void LoadScene(){
+        SceneManager.LoadScene("GameOver");
     }
 }
