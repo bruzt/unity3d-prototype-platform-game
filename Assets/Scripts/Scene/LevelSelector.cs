@@ -25,7 +25,7 @@ public class LevelSelector : MonoBehaviour
     ////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////
 
-    public void PlayLevel(string level){
+    public static void PlayLevel(string level){
         if(avaliableLevels.Contains(level)) {
             currentLevel = level;
             SceneManager.LoadScene(level);
@@ -34,7 +34,8 @@ public class LevelSelector : MonoBehaviour
 
     public static void AddAvaliableLevel(string newLevel){
         if(avaliableLevels.Contains(newLevel) == false) {
-            avaliableLevels.Add(newLevel);
+            int currentIndex = avaliableLevels.IndexOf(currentLevel);
+            avaliableLevels.Insert(currentIndex+1, newLevel);
         }
     }
 
@@ -59,12 +60,9 @@ public class LevelSelector : MonoBehaviour
         return currentLevel;
     }
 
-    public static void SetCurrentLevel(string level){
-        currentLevel = level;
-    }
-
     public static string GetNextLevel(){
         int currentIndex = avaliableLevels.IndexOf(currentLevel);
+
         return avaliableLevels[currentIndex+1];
     }
 }

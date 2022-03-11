@@ -21,8 +21,7 @@ public class WinLevel : MonoBehaviour
     ///////////////////////////////////////////////////////
 
     public void NextLevel(){
-        LevelSelector.SetCurrentLevel(LevelSelector.GetNextLevel());
-        SceneManager.LoadScene(LevelSelector.GetNextLevel());
+        LevelSelector.PlayLevel(LevelSelector.GetNextLevel());
     }
 
     public void SelectLevel(){
