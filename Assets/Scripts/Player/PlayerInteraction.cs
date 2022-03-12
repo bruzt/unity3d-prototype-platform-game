@@ -32,7 +32,7 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider collider){
-        if(collider.tag.Contains("Water")) EnterWater();
+        if(collider.name.Contains("Water")) EnterWater();
         if(collider.name.Contains("Trampoline")) EnterTrampoline(collider);
         if(collider.name.Contains("Ground")) EnterGround();
         if(collider.name.Contains("Ground") && collider.name.Contains("Side") == false) {
@@ -50,7 +50,7 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     void OnTriggerExit(Collider collider){
-        if(collider.tag.Contains("Water")) ExitWater();
+        if(collider.name.Contains("Water")) ExitWater();
         if(collider.name.Contains("Ground")) isInGround = false;
         if(collider.name.Contains("Side")) ExitGroundSide();
     }
