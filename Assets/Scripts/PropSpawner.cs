@@ -32,25 +32,21 @@ public class PropSpawner : MonoBehaviour
 
         int sectionAmount =  (int)System.Math.Round((float)amount/((float)positions.Count-1));
 
-        for(int i=0; i < positions.Count; i++){
+        for(int i=0; i < positions.Count-1; i++){
             for(int j=0; j < sectionAmount; j++){
 
                 Vector3 initPosition = positions[i];
-                Vector3 nextPosition;
+                Vector3 nextPosition = positions[i+1];
+
+                Vector3 position = transform.position;
+
+                float percent = (float)j/(float)sectionAmount;
                 
-                if(i <= positions.Count - 2) {
-                    nextPosition = positions[i+1];
+                position = Vector3.Lerp(position + initPosition, position + nextPosition, percent);
 
-                    Vector3 position = transform.position;
+                GameObject prop = Instantiate(prefab, position, transform.rotation);
 
-                    float percent = (float)j/(float)sectionAmount;
-                    
-                    position = Vector3.Lerp(position + initPosition, position + nextPosition, percent);
-
-                    GameObject prop = Instantiate(prefab, position, transform.rotation);
-
-                    prop.transform.SetParent(transform);
-                }
+                prop.transform.SetParent(transform);
             }
         }
     }

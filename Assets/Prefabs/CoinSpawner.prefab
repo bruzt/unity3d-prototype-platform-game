@@ -44,10 +44,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6813071692008004102, guid: 84a636059f83753c49735d4dbf94b218, type: 3}
-  amount: 20
-  positions:
-  - {x: -0.4, y: 1, z: 0}
-  - {x: 2.12, y: 3.38, z: 0}
-  - {x: -1.01, y: 6.01, z: 0}
-  - {x: 2.56, y: 9.75, z: 0}
-  - {x: -1.04, y: 12, z: 0}
+  amount: 10
+  positions: []
