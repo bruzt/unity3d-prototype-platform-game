@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd2aaa2f409d3e8c1accf3d2308a2395, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 40
+  size: 45
   offsetNode: 0.1
 --- !u!1 &1371996711318651113
 GameObject:
@@ -191,4 +191,4 @@ FixedJoint:
   m_EnableCollision: 0
   m_EnablePreprocessing: 1
   m_MassScale: 1
-  m_ConnectedMassScale: 0.93
+  m_ConnectedMassScale: 0.9

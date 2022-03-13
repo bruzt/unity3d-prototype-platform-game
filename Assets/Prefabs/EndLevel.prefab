@@ -63,6 +63,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openLevel: Level2
   endLevel: 1
+  slowDownPercent: 50
 --- !u!1 &6135511667949823043
 GameObject:
   m_ObjectHideFlags: 0

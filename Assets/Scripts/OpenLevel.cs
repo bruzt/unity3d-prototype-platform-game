@@ -8,11 +8,12 @@ public class OpenLevel : MonoBehaviour
 
     [SerializeField] private string openLevel;
     [SerializeField] private bool endLevel = true;
+    [SerializeField, Range(0, 75)] private int slowDownPercent = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        NormalTime();
     }
 
     // Update is called once per frame
@@ -27,7 +28,7 @@ public class OpenLevel : MonoBehaviour
             LevelSelector.AddAvaliableLevel(openLevel);
 
             if(endLevel) {
-                SlowDownTime(0.5f);
+                SlowDownTime();
                 StartCoroutine(GoToWinScene());
             }
         }
@@ -44,9 +45,14 @@ public class OpenLevel : MonoBehaviour
         yield return null;
     }
 
-    private void SlowDownTime(float slowPercent){
+    private void SlowDownTime(){
         float fixedDeltaTime = Time.fixedDeltaTime;
-        Time.timeScale = slowPercent;
+        Time.timeScale = (float)(-(slowDownPercent-100))/(float)100;
         Time.fixedDeltaTime = fixedDeltaTime * Time.timeScale;
+    }
+
+    private void NormalTime(){
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02f;
     }
 }

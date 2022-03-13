@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
 
                 if(inputAttack) playerAttack.Attack(inputDirection.x);
             }
-            
         }
     }
 }

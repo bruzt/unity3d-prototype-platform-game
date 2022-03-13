@@ -541,7 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isLookingRight: 1
-  totalJumps: 2
+  totalJumps: 1
   jumpsMade: 0
   walking:
     moveForce: 150
@@ -582,7 +582,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0984b2c3fa848159ea153372fe3c8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
   attackRate: 1
   attackDuration: 0.1
   dashForce: 30000
