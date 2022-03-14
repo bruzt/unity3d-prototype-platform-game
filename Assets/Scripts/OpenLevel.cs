@@ -5,6 +5,8 @@ using UnityEngine;
 public class OpenLevel : MonoBehaviour
 {
     private bool triggerOnce = false;
+    private float normalTimeScale;
+    private float normalFixedDeltaTime;
 
     [SerializeField] private string openLevel;
     [SerializeField] private bool endLevel = true;
@@ -13,7 +15,8 @@ public class OpenLevel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        NormalTime();
+        normalTimeScale = Time.timeScale;
+        normalFixedDeltaTime = Time.fixedDeltaTime;
     }
 
     // Update is called once per frame
@@ -27,10 +30,7 @@ public class OpenLevel : MonoBehaviour
             triggerOnce = true;
             LevelSelector.AddAvaliableLevel(openLevel);
 
-            if(endLevel) {
-                SlowDownTime();
-                StartCoroutine(GoToWinScene());
-            }
+            if(endLevel) StartCoroutine(GoToWinScene());
         }
     }
 
@@ -38,7 +38,12 @@ public class OpenLevel : MonoBehaviour
     /////////////////////////////////////////////////////////////////
 
     private IEnumerator GoToWinScene(){
+
+        SlowDownTime();
+
         yield return new WaitForSeconds(1);
+
+        NormalTime();
 
         WinLevel.LoadScene();
 
@@ -46,13 +51,12 @@ public class OpenLevel : MonoBehaviour
     }
 
     private void SlowDownTime(){
-        float fixedDeltaTime = Time.fixedDeltaTime;
         Time.timeScale = (float)(-(slowDownPercent-100))/(float)100;
-        Time.fixedDeltaTime = fixedDeltaTime * Time.timeScale;
+        Time.fixedDeltaTime = Time.fixedDeltaTime * Time.timeScale;
     }
 
     private void NormalTime(){
-        Time.timeScale = 1;
-        Time.fixedDeltaTime = 0.02f;
+        Time.timeScale = normalTimeScale;
+        Time.fixedDeltaTime = normalFixedDeltaTime;
     }
 }
