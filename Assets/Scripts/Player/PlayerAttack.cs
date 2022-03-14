@@ -19,8 +19,8 @@ public class PlayerAttack : MonoBehaviour
     private Collider playerDashCollider;
     private Collider playerFootCollider;
     private float currentAttackRate;
-    private float currentAttackDuration;
-    private string activeAttack;
+    private bool isDashing = false;
+    private string activeAttack = "Dash";
 
     [SerializeField] private float attackRate = 1;
     [SerializeField] private float attackDuration = 0.1f;
@@ -36,7 +36,6 @@ public class PlayerAttack : MonoBehaviour
         playerDashCollider = transform.Find("PlayerDashCollider").GetComponent<Collider>();
         playerFootCollider = transform.Find("PlayerFootCollider").GetComponent<Collider>();
         currentAttackRate = attackRate;
-        currentAttackDuration = attackDuration;
         trailRenderer.time = attackDuration;
         trailRenderer.widthMultiplier = 1.5f;
     }
@@ -45,40 +44,45 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         currentAttackRate += Time.deltaTime;
-        currentAttackDuration += Time.deltaTime;
-
-        if(GetIsAttacking()) {
-            trailRenderer.emitting = true;
-            SetPlayerAttackColliders(true);
-        }
-        else {
-            trailRenderer.emitting = false;
-            SetPlayerAttackColliders(false);
-        }
     }
 
     ///////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////
 
     public void Attack(float direction){
-        if(currentAttackRate > attackRate && activeAttack != null){
+        if(
+            currentAttackRate > attackRate && 
+            activeAttack != null && 
+            playerLife.GetIsDamageFlashing() == false
+        ){
             currentAttackRate = 0;
-            currentAttackDuration = 0;
 
-            if(activeAttack == AttackTypes.Dash.ToString()) DashAttack();
+            if(activeAttack == AttackTypes.Dash.ToString()) StartCoroutine(DashAttackCoroutine());
         }
     }
 
-    private void DashAttack(){
+    private IEnumerator DashAttackCoroutine(){
+        isDashing = true;
+        SetDashAttackColliders(true);
+        trailRenderer.emitting = true;
+
         float direction = (playerMovement.GetIsLookingRight()) ? 1 : -1;
         playerRigidbody.AddForce(direction * dashForce, 0, 0);
+
+        yield return new WaitForSeconds(attackDuration);
+        
+        trailRenderer.emitting = false;
+        SetDashAttackColliders(false);
+        isDashing = false;
+
+        yield return null;
     }
 
     ///////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////
 
-    public bool GetIsAttacking(){
-        return currentAttackDuration < attackDuration;
+    public bool GetIsDashing(){
+        return isDashing;
     }
 
     public void SetPlayerDashCollider(bool value){
@@ -89,7 +93,7 @@ public class PlayerAttack : MonoBehaviour
         playerFootCollider.enabled = value;
     }
 
-    void SetPlayerAttackColliders(bool value){
+    void SetDashAttackColliders(bool value){
         SetPlayerDashCollider(value);
         SetPlayerFootCollider(!value);
         playerLife.SetPlayerBodyCollider(!value);

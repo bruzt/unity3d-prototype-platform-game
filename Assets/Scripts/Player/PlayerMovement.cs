@@ -85,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
             playerRigidbody.AddForce(new Vector3(input.x, input.y, 0) * walking.moveForce);
 
-            if(playerAttack.GetIsAttacking() == false){
+            if(playerAttack.GetIsDashing() == false){
                 Vector3 maxVelocity = playerRigidbody.velocity;
 
                 if(playerInteraction.GetIsInGround()){

@@ -11,13 +11,12 @@ public class PlayerLife : MonoBehaviour
     private Renderer[] playerModelRenderers;
     private Collider playerBodyCollider;
     private int currentHitPoints;
-    private float currentTimeInvencible = 0;
-    private bool isBlinking = false;
+    private float currentDamageFlashTime = 0;
     private bool isAlive = true;
 
     [SerializeField] private int totalHitPoints = 3;
-    [SerializeField] private float timeInvencible = 1;
-    [SerializeField] private float blinkIntervalTime = 0.2f;
+    [SerializeField] private float damageFlashTime = 1;
+    [SerializeField] private float damageFlashIntervalTime = 0.2f;
 
     // Start is called before the first frame update
     void Start()
@@ -28,26 +27,24 @@ public class PlayerLife : MonoBehaviour
         playerModelRenderers = transform.Find("Model").GetComponentsInChildren<Renderer>();
         playerBodyCollider = transform.Find("PlayerBodyCollider").GetComponent<Collider>();
         currentHitPoints = totalHitPoints;
-        currentTimeInvencible = timeInvencible;
+        currentDamageFlashTime = damageFlashTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        currentTimeInvencible += Time.deltaTime;
+        currentDamageFlashTime += Time.deltaTime;
     }
 
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
 
     public void ApplyDamage(){
-        if(GetIsInvencible() == false && playerAttack.GetIsAttacking() == false){
-            SetPlayerColliders(false);
-
+        if(GetIsDamageFlashing() == false){
             currentHitPoints--;
-            currentTimeInvencible = 0;
+            currentDamageFlashTime = 0;
 
-            StartCoroutine(DamageBlinkCoroutine());
+            StartCoroutine(DamageFlashAnimationCoroutine());
 
             if(currentHitPoints < 1) {
                 SetIsAlive(false); 
@@ -58,21 +55,20 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-    private IEnumerator DamageBlinkCoroutine(){
+    private IEnumerator DamageFlashAnimationCoroutine(){
 
-        isBlinking = true;
+        SetPlayerColliders(false);
 
-        while(GetIsInvencible()){
+        while(GetIsDamageFlashing()){
             SetPlayerModelVisible(false);
 
-            yield return new WaitForSeconds(blinkIntervalTime);
+            yield return new WaitForSeconds(damageFlashIntervalTime);
 
             SetPlayerModelVisible(true);
 
-            yield return new WaitForSeconds(blinkIntervalTime);
+            yield return new WaitForSeconds(damageFlashIntervalTime);
         }
 
-        isBlinking = false;
         SetPlayerColliders(true);
 
         yield return null;
@@ -90,8 +86,8 @@ public class PlayerLife : MonoBehaviour
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////
 
-    public bool GetIsInvencible(){
-        return currentTimeInvencible < timeInvencible;
+    public bool GetIsDamageFlashing(){
+        return currentDamageFlashTime <= damageFlashTime;
     }
 
     public bool GetIsAlive(){

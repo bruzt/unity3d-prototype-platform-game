@@ -322,7 +322,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
-  m_Emitting: 1
+  m_Emitting: 0
 --- !u!1 &2829424067459928438
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,7 +540,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110f06b1d9478f93bb608b4a11085d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isLookingRight: 1
   totalJumps: 1
   jumpsMade: 0
   walking:
@@ -568,8 +567,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHitPoints: 3
-  timeInvencible: 1
-  blinkIntervalTime: 0.1
+  damageFlashTime: 1
+  damageFlashIntervalTime: 0.1
 --- !u!114 &7816312793529442633
 MonoBehaviour:
   m_ObjectHideFlags: 0
