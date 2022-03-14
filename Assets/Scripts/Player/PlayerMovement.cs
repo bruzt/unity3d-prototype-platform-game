@@ -24,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInteraction playerInteraction;
     private PlayerAttack playerAttack;
     private float inRopeY;
+    private bool isLookingRight = true;
 
-    [SerializeField] private bool isLookingRight = true;
     [SerializeField] private int totalJumps = 1;
     [SerializeField] private int jumpsMade = 0;
     [SerializeField] private Walking walking;
@@ -235,5 +235,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetTotalJumps(int jumps){
         totalJumps = jumps;
+    }
+
+    public bool GetIsLookingRight(){
+        return isLookingRight;
     }
 }

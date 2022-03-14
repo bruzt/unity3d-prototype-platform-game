@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
 {
     private Rigidbody playerRigidbody;
     private PlayerLife playerLife;
+    private PlayerMovement playerMovement;
     private TrailRenderer trailRenderer;
     private Collider playerDashCollider;
     private Collider playerFootCollider;
@@ -30,6 +31,7 @@ public class PlayerAttack : MonoBehaviour
     {
         playerRigidbody = GetComponent<Rigidbody>();
         playerLife = GetComponent<PlayerLife>();
+        playerMovement = GetComponent<PlayerMovement>();
         trailRenderer = GetComponentInChildren<TrailRenderer>();
         playerDashCollider = transform.Find("PlayerDashCollider").GetComponent<Collider>();
         playerFootCollider = transform.Find("PlayerFootCollider").GetComponent<Collider>();
@@ -59,18 +61,16 @@ public class PlayerAttack : MonoBehaviour
     ///////////////////////////////////////////////////////////////////
 
     public void Attack(float direction){
-        if(currentAttackRate > attackRate && direction != 0){
-            if(activeAttack == AttackTypes.Dash.ToString()) DashAttack(direction);
-        }
+        if(currentAttackRate > attackRate && activeAttack != null){
+            currentAttackRate = 0;
+            currentAttackDuration = 0;
 
-        //print("attack " + direction);
+            if(activeAttack == AttackTypes.Dash.ToString()) DashAttack();
+        }
     }
 
-    private void DashAttack(float direction){
-        currentAttackRate = 0;
-        currentAttackDuration = 0;
-
-        direction = (direction > 0) ? 1 : -1;
+    private void DashAttack(){
+        float direction = (playerMovement.GetIsLookingRight()) ? 1 : -1;
         playerRigidbody.AddForce(direction * dashForce, 0, 0);
     }
 
