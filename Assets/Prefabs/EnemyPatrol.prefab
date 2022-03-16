@@ -162,7 +162,7 @@ MonoBehaviour:
   - PlayerFoot
   - PlayerDash
   totalHitPoints: 1
-  timeToDestroy: 0.5
+  timeToDestroy: 1
   ForceUpOnHit: 10000
   shrinkYWhenDestroyed: 1
   shrinkYFactor: 0.5

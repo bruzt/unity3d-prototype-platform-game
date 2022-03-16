@@ -54,14 +54,14 @@ public class DestructibleBehavior : MonoBehaviour
             if(shrinkYWhenDestroyed) transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y * shrinkYFactor, transform.localScale.z);
 
             if(spawnAfterDestroyed != null) StartCoroutine(SpawnAfterDestroyedCoroutine());
-            else Destroy(timeToDestroy);
+            else DestroyThis();
         }
     }
 
-    void Destroy(float time){
+    void DestroyThis(){
         GetComponent<Rigidbody>().constraints =  RigidbodyConstraints.FreezePosition;
         GetComponentInChildren<Collider>().enabled = false;
-        Destroy(gameObject, time);
+        Destroy(gameObject, timeToDestroy);
     }
 
     IEnumerator SpawnAfterDestroyedCoroutine(){
@@ -82,7 +82,7 @@ public class DestructibleBehavior : MonoBehaviour
             flyTowardsName.SetShouldFlyTowardsName(true);
         }
         
-        Destroy(0);
+        DestroyThis();
 
         yield return null;
     }
@@ -90,7 +90,10 @@ public class DestructibleBehavior : MonoBehaviour
     IEnumerator DisableRendererCoroutine(){
         yield return new WaitForSeconds(timeToDestroy);
 
-        GetComponentInChildren<Renderer>().enabled = false;
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        foreach (Renderer renderer in renderers){
+            renderer.enabled = false;
+        }
 
         yield return null;
     }
