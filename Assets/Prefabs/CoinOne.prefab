@@ -91,6 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1936083898267514794}
   - component: {fileID: 758616291860850179}
+  - component: {fileID: 7421929650528206897}
   m_Layer: 0
   m_Name: CoinOne
   m_TagString: CoinOne
@@ -126,6 +127,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7421929650528206897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6813071692008004102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca1c7852cd33aff9b8108e0eedcd4512, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7878628167814697844
 GameObject:
   m_ObjectHideFlags: 0

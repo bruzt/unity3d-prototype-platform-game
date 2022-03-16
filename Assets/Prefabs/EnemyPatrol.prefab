@@ -164,6 +164,8 @@ MonoBehaviour:
   totalHitPoints: 1
   timeToDestroy: 0.5
   ForceUpOnHit: 10000
+  shrinkYWhenDestroyed: 1
+  shrinkYFactor: 0.5
 --- !u!114 &2855784930455126088
 MonoBehaviour:
   m_ObjectHideFlags: 0
