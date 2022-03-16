@@ -39,6 +39,7 @@
      <Compile Include="Assets/Scripts/Player/PlayerInteraction.cs" />
      <Compile Include="Assets/Scripts/Scene/LevelSelector.cs" />
      <Compile Include="Assets/Scripts/Player/PlayerAnimation.cs" />
+     <Compile Include="Assets/Scripts/GameObjectRespawner.cs" />
      <Compile Include="Assets/Scripts/Player/PlayerMovement.cs" />
      <Compile Include="Assets/Scripts/OpenLevel.cs" />
      <Compile Include="Assets/Scripts/ObstacleBehavior.cs" />
@@ -58,7 +59,7 @@
      <Compile Include="Assets/Scripts/Enemy/EnemyBehavior.cs" />
      <Compile Include="Assets/Scripts/RopeController.cs" />
      <Compile Include="Assets/Scripts/Player/PlayerController.cs" />
-     <Compile Include="Assets/Scripts/GameObjectRespawner.cs" />
+     <Compile Include="Assets/Scripts/FlyTowardsTag.cs" />
     <Reference Include="UnityEngine">
         <HintPath>/home/bruno/Unity/Hub/Editor/2020.3.30f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
