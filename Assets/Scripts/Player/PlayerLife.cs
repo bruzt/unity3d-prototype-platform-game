@@ -10,11 +10,9 @@ public class PlayerLife : MonoBehaviour
     private PlayerAttack playerAttack;
     private Renderer[] playerModelRenderers;
     private Collider playerBodyCollider;
-    private int currentHitPoints;
     private float currentDamageFlashTime = 0;
     private bool isAlive = true;
 
-    [SerializeField] private int totalHitPoints = 3;
     [SerializeField] private float damageFlashTime = 1;
     [SerializeField] private float damageFlashIntervalTime = 0.2f;
 
@@ -26,7 +24,6 @@ public class PlayerLife : MonoBehaviour
         playerAttack = GetComponent<PlayerAttack>();
         playerModelRenderers = transform.Find("Model").GetComponentsInChildren<Renderer>();
         playerBodyCollider = transform.Find("PlayerBodyCollider").GetComponent<Collider>();
-        currentHitPoints = totalHitPoints;
         currentDamageFlashTime = damageFlashTime;
     }
 
@@ -41,12 +38,13 @@ public class PlayerLife : MonoBehaviour
 
     public void ApplyDamage(){
         if(GetIsDamageFlashing() == false){
-            currentHitPoints--;
+            GameController.SubtractHitpoints(1);
             currentDamageFlashTime = 0;
 
             StartCoroutine(DamageFlashAnimationCoroutine());
 
-            if(currentHitPoints < 1) {
+            if(GameController.GetHitpoints() < 1) {
+                GameController.SubtractLives(1);
                 SetIsAlive(false); 
                 playerRigidbody.velocity = Vector3.zero;
                 StartCoroutine(GoToGameOverScene());
