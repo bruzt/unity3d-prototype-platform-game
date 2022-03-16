@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlyTowardsTag : MonoBehaviour
+public class FlyTowardsName : MonoBehaviour
 {
-    private bool shouldFlyTowardsTag = false;
-    private string tagToFlyTowards;
+    private bool shouldFlyTowardsName = false;
+    private string nameToFlyTowards;
     [SerializeField] private float flySpeed = 5;
 
     // Start is called before the first frame update
@@ -17,27 +17,27 @@ public class FlyTowardsTag : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        FlyTowardsPlayer();
+        FlyTowards();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////
 
-    private void FlyTowardsPlayer(){
-        if(shouldFlyTowardsTag){
-            transform.position = Vector3.MoveTowards(transform.position, GameObject.FindGameObjectWithTag(tagToFlyTowards).transform.position, flySpeed * Time.deltaTime);
+    private void FlyTowards(){
+        if(shouldFlyTowardsName){
+            transform.position = Vector3.MoveTowards(transform.position, GameObject.Find(nameToFlyTowards).transform.position, flySpeed * Time.deltaTime);
         }
     }
 
     ///////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////
 
-    public void SetShouldFlyTowardsTag(bool value){
-        shouldFlyTowardsTag = value;
+    public void SetShouldFlyTowardsName(bool value){
+        shouldFlyTowardsName = value;
     }
 
-    public void SetTag(string value){
-        tagToFlyTowards = value;
+    public void SetNameToFlyTowards(string value){
+        nameToFlyTowards = value;
     }
 
     public void SetFlySpeed(float value){

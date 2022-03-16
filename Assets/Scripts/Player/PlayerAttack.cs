@@ -20,7 +20,7 @@ public class PlayerAttack : MonoBehaviour
     private Collider playerFootCollider;
     private float currentAttackRate;
     private bool isDashing = false;
-    private string activeAttack = "Dash";
+    private string activeAttack;
 
     [SerializeField] private float attackRate = 1;
     [SerializeField] private float attackDuration = 0.1f;

@@ -166,6 +166,8 @@ MonoBehaviour:
   ForceUpOnHit: 10000
   shrinkYWhenDestroyed: 1
   shrinkYFactor: 0.5
+  spawnAfterDestroyed: {fileID: 6813071692008004102, guid: 84a636059f83753c49735d4dbf94b218, type: 3}
+  quantityToSpawn: 1
 --- !u!114 &2855784930455126088
 MonoBehaviour:
   m_ObjectHideFlags: 0
