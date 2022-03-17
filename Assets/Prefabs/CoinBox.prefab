@@ -76,7 +76,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
@@ -94,9 +94,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   takesDamageOf:
   - PlayerFoot
+  - PlayerHead
+  - PlayerDash
   totalHitPoints: 1
   timeToDestroy: 0.2
-  ForceUpOnHit: 5000
+  ForceOnHit: 8000
   shrinkYWhenDestroyed: 1
   shrinkYFactor: 0.9
   spawnAfterDestroyed: {fileID: 6813071692008004102, guid: 84a636059f83753c49735d4dbf94b218, type: 3}

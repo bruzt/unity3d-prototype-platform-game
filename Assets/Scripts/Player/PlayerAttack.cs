@@ -17,10 +17,11 @@ public class PlayerAttack : MonoBehaviour
     private PlayerMovement playerMovement;
     private TrailRenderer trailRenderer;
     private Collider playerDashCollider;
+    private Collider playerHeadCollider;
     private Collider playerFootCollider;
     private float currentAttackRate;
     private bool isDashing = false;
-    private string activeAttack;
+    private string activeAttack = "Dash";
 
     [SerializeField] private float attackRate = 1;
     [SerializeField] private float attackDuration = 0.1f;
@@ -34,6 +35,7 @@ public class PlayerAttack : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement>();
         trailRenderer = GetComponentInChildren<TrailRenderer>();
         playerDashCollider = transform.Find("PlayerDashCollider").GetComponent<Collider>();
+        playerHeadCollider = transform.Find("PlayerHeadCollider").GetComponent<Collider>();
         playerFootCollider = transform.Find("PlayerFootCollider").GetComponent<Collider>();
         currentAttackRate = attackRate;
         trailRenderer.time = attackDuration;
@@ -89,12 +91,17 @@ public class PlayerAttack : MonoBehaviour
         playerDashCollider.enabled = value;
     }
 
+    public void SetPlayerHeadCollider(bool value){
+        playerHeadCollider.enabled = value;
+    }
+
     public void SetPlayerFootCollider(bool value){
         playerFootCollider.enabled = value;
     }
 
     void SetDashAttackColliders(bool value){
         SetPlayerDashCollider(value);
+        SetPlayerHeadCollider(!value);
         SetPlayerFootCollider(!value);
         playerLife.SetPlayerBodyCollider(!value);
     }

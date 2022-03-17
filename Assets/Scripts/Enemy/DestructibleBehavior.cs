@@ -10,7 +10,7 @@ public class DestructibleBehavior : MonoBehaviour
     [SerializeField] private List<string> takesDamageOf;
     [SerializeField] private int totalHitPoints = 1;
     [SerializeField] private float timeToDestroy;
-    [SerializeField] private int ForceUpOnHit = 10000;
+    [SerializeField] private int ForceOnHit = 10000;
     [SerializeField] private bool shrinkYWhenDestroyed = false;
     [SerializeField] private float shrinkYFactor = 0.5f;
     [SerializeField] private GameObject spawnAfterDestroyed;
@@ -33,13 +33,22 @@ public class DestructibleBehavior : MonoBehaviour
         foreach(string colliderName in takesDamageOf){
 
             if(other.name.Contains(colliderName) && currentHitPoints > 0) {
-                if(colliderName.Contains("Foot")) {
-                    Rigidbody otherRigidbody = other.GetComponentInParent<Rigidbody>();
-                    otherRigidbody.velocity = new Vector3(otherRigidbody.velocity.x, 0, 0);
-                    otherRigidbody.AddForce(0, ForceUpOnHit,0);
-                }
 
-                ApplyDamage(1);
+                PlayerInteraction playerInteraction = other.GetComponentInParent<PlayerInteraction>();
+                
+                if(colliderName.Contains("Foot")) {
+                    if(playerInteraction.GetIsInGround() == false){
+                        ApplyForce(other, ForceOnHit);
+                        ApplyDamage(1);
+                    }  
+                } else if(colliderName.Contains("Head")) {
+                    if(playerInteraction.GetIsInGround() == false){
+                        ApplyForce(other, -ForceOnHit);
+                        ApplyDamage(1);
+                    } 
+                } else {
+                    ApplyDamage(1);
+                }
             }
         }
     }
@@ -59,8 +68,6 @@ public class DestructibleBehavior : MonoBehaviour
     }
 
     void DestroyThis(){
-        GetComponent<Rigidbody>().constraints =  RigidbodyConstraints.FreezePosition;
-        GetComponentInChildren<Collider>().enabled = false;
         Destroy(gameObject, timeToDestroy);
     }
 
@@ -88,6 +95,13 @@ public class DestructibleBehavior : MonoBehaviour
     }
 
     IEnumerator DisableRendererCoroutine(){
+        GetComponent<Rigidbody>().constraints =  RigidbodyConstraints.FreezePosition;
+
+        Collider[] colliders = GetComponentsInChildren<Collider>();
+        foreach(Collider collider in colliders){
+            collider.enabled = false;
+        }
+        
         yield return new WaitForSeconds(timeToDestroy);
 
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
@@ -96,5 +110,11 @@ public class DestructibleBehavior : MonoBehaviour
         }
 
         yield return null;
+    }
+
+    void ApplyForce(Collider other, int force){
+        Rigidbody otherRigidbody = other.GetComponentInParent<Rigidbody>();
+        if(force > 0) otherRigidbody.velocity = new Vector3(otherRigidbody.velocity.x, 0, 0);
+        otherRigidbody.AddForce(0, force,0);
     }
 }
