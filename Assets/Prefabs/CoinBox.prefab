@@ -98,7 +98,7 @@ MonoBehaviour:
   - PlayerDash
   totalHitPoints: 1
   timeToDestroy: 0.2
-  ForceOnHit: 8000
+  ForceOnHit: 10000
   shrinkYWhenDestroyed: 1
   shrinkYFactor: 0.9
   spawnAfterDestroyed: {fileID: 6813071692008004102, guid: 84a636059f83753c49735d4dbf94b218, type: 3}
