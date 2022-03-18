@@ -43,7 +43,7 @@ public class DestructibleBehavior : MonoBehaviour
                     }  
                 } else if(colliderName.Contains("Head")) {
                     if(playerInteraction.GetIsInGround() == false){
-                        ApplyForce(other, -ForceOnHit);
+                        ApplyForce(other, 0);
                         ApplyDamage(1);
                     } 
                 } else {
@@ -114,7 +114,7 @@ public class DestructibleBehavior : MonoBehaviour
 
     void ApplyForce(Collider other, int force){
         Rigidbody otherRigidbody = other.GetComponentInParent<Rigidbody>();
-        if(force > 0) otherRigidbody.velocity = new Vector3(otherRigidbody.velocity.x, 0, 0);
+        otherRigidbody.velocity = new Vector3(otherRigidbody.velocity.x, 0, 0);
         otherRigidbody.AddForce(0, force,0);
     }
 }
