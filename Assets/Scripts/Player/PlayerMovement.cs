@@ -5,6 +5,7 @@ using UnityEngine;
 [System.Serializable] public class Walking {
     public float moveForce = 1;
     public float maxSpeed = 1;
+    public float runMultiplier = 1.5f;
     public float jumpForce = 1;
     public float horizontalJumpForce = 1;
     public float maxJumpSpeed = 1;
@@ -65,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
     ///////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////
 
-    public void Move(Vector2 input){
+    public void Move(Vector2 input, bool isRunning = false){
         if(playerInteraction.GetIsSwimming()){
             playerRigidbody.AddForce(new Vector3(input.x, input.y, 0) * swimming.swimForce);
 
@@ -86,12 +87,13 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody.AddForce(new Vector3(input.x, input.y, 0) * walking.moveForce);
 
             if(playerAttack.GetIsDashing() == false){
+                float finalmaxSpeed = (isRunning) ? walking.maxSpeed * walking.runMultiplier : walking.maxSpeed;
                 Vector3 maxVelocity = playerRigidbody.velocity;
 
                 if(playerInteraction.GetIsInGround()){
-                    maxVelocity.x = Mathf.Clamp(maxVelocity.x, -walking.maxSpeed * -input.x, walking.maxSpeed * input.x);
+                    maxVelocity.x = Mathf.Clamp(maxVelocity.x, -finalmaxSpeed * -input.x, finalmaxSpeed * input.x);
                 } else {
-                    maxVelocity.x = Mathf.Clamp(maxVelocity.x, -walking.maxSpeed, walking.maxSpeed);
+                    maxVelocity.x = Mathf.Clamp(maxVelocity.x, -finalmaxSpeed, finalmaxSpeed);
                 }
                 
                 playerRigidbody.velocity = maxVelocity;

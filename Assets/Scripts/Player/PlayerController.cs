@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 inputDirection;
     private bool inputJump;
     private bool inputAttack;
+    private bool inputRun;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
             inputDirection.x = Input.GetAxis("Horizontal");
             inputJump = Input.GetButtonDown("Jump");
             inputAttack = Input.GetButtonDown("Fire1");
+            inputRun = Input.GetButton("Fire3");
 
             if(playerInteraction.GetIsInRope()){
 
@@ -44,7 +46,7 @@ public class PlayerController : MonoBehaviour
 
                 if(inputJump) playerMovement.Jump();
             
-                playerMovement.Move(inputDirection);
+                playerMovement.Move(inputDirection, inputRun);
 
                 if(inputAttack) playerAttack.Attack(inputDirection.x);
             }

@@ -588,8 +588,8 @@ MonoBehaviour:
   totalJumps: 1
   jumpsMade: 0
   walking:
-    moveForce: 150
-    maxSpeed: 10
+    moveForce: 100
+    maxSpeed: 8
     jumpForce: 10000
     horizontalJumpForce: 30000
     maxJumpSpeed: 2
