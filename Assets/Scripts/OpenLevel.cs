@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class OpenLevel : MonoBehaviour
 {
+    private Camera mainCamera;
+    private Transform mainCameraTransform;
     private bool triggerOnce = false;
     private float normalTimeScale;
     private float normalFixedDeltaTime;
+    private bool levelEnded = false;
 
     [SerializeField] private string openLevel;
-    [SerializeField] private bool endLevel = true;
+    [SerializeField] private bool shouldEndLevel = true;
     [SerializeField, Range(0, 75)] private int slowDownPercent = 0;
+    [SerializeField] private float cameraFieldOfViewWin = 25;
+    [SerializeField] private float cameraRotationXWin = 25;
 
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = Camera.main;
+        mainCameraTransform = mainCamera.GetComponent<Transform>();
+
         normalTimeScale = Time.timeScale;
         normalFixedDeltaTime = Time.fixedDeltaTime;
     }
@@ -22,7 +30,7 @@ public class OpenLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(levelEnded) ZoomCamera();
     }
 
     void OnTriggerEnter(Collider other){
@@ -30,16 +38,18 @@ public class OpenLevel : MonoBehaviour
             triggerOnce = true;
             LevelSelector.AddAvaliableLevel(openLevel);
 
-            if(endLevel) StartCoroutine(GoToWinScene());
+            if(shouldEndLevel) StartCoroutine(EndLevelCoroutine());
         }
     }
 
     /////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////
 
-    private IEnumerator GoToWinScene(){
+    private IEnumerator EndLevelCoroutine(){
 
         SlowDownTime();
+
+        levelEnded = true;
 
         yield return new WaitForSeconds(1);
 
@@ -58,5 +68,12 @@ public class OpenLevel : MonoBehaviour
     private void NormalTime(){
         Time.timeScale = normalTimeScale;
         Time.fixedDeltaTime = normalFixedDeltaTime;
+    }
+
+    private void ZoomCamera(){
+        mainCamera.fieldOfView = Mathf.Lerp(mainCamera.fieldOfView, cameraFieldOfViewWin, Time.deltaTime);
+
+        float cameraRotationX = Mathf.Lerp(mainCameraTransform.rotation.eulerAngles.x, cameraRotationXWin, Time.deltaTime);
+        mainCameraTransform.rotation = Quaternion.Euler(cameraRotationX, 0, 0);
     }
 }
