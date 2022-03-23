@@ -122,6 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3677033336816818557}
   - component: {fileID: 2548488892686420180}
+  - component: {fileID: 3060861043399179911}
   m_Layer: 0
   m_Name: CoinTen
   m_TagString: CoinOne
@@ -157,3 +158,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3060861043399179911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8599004196873893073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e5439efa36a3614a1fda89d5d2bc68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateX: 0
+  rotateY: 1
+  rotateZ: 0
+  speed: 25
